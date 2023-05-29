@@ -495,6 +495,10 @@ img {
   cursor: pointer;
 }
 
+.box-select-filter {
+  width: 132px;
+}
+
 .unselected {
   color: #919191;
   border-radius: 16px;
