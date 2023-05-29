@@ -524,6 +524,11 @@ img {
   padding-bottom: 8px;
 }
 
+.unselected-pagination {
+  cursor: pointer;
+  color: black;
+}
+
 .selected-pagination {
   cursor: default;
   background: black;
@@ -533,9 +538,6 @@ img {
   text-align: center;
   padding-top: 8px;
   padding-bottom: 8px;
-}
-.unselected-pagination {
-  cursor: pointer;
 }
 
 .material-icons:hover, .tools-tag-1:hover {

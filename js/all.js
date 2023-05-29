@@ -15,19 +15,19 @@ $(document).ready(function () {
 
   //切換分頁(預寫)
   // var index = 0;
-  // console.log($('.pagination li'))
+  // console.log($('.pagination a'))
   // $('.pagination li:not(:last-child)').click(function () {
-  //   $('.pagination li').removeClass('font-900 selected-pagination');
-  //   $('.pagination li').addClass('unselected-pagination');
-  //   $(this).addClass('font-900 selected-pagination');
+  //   $('.pagination a').removeClass('font-900 selected-pagination font-white');
+  //   $('.pagination a').addClass('unselected-pagination');
+  //   $(this).find('a').addClass('font-900 selected-pagination font-white');
   //   index = $(this).index();
   // });
 
   // $('.pagination li:last-child').click(function () {
   //   if(index < 4){
-  //     $(`.pagination li:nth-child(${index+1})`).removeClass('font-900 selected-pagination');
+  //     $(`.pagination li:nth-child(${index+1})`).find('a').removeClass('font-900 selected-pagination font-white');
   //     $(`.pagination li:nth-child(${index+1})`);
-  //     $(`.pagination li:nth-child(${index+2})`).addClass('font-900 selected-pagination');
+  //     $(`.pagination li:nth-child(${index+2})`).find('a').addClass('font-900 selected-pagination');
   //     index += 1;
   //   }
   // });
@@ -196,23 +196,24 @@ function req ({ type, sort, page, search }) {
 function paginationProcess (pagesData) {
   $('.pagination li:not(:last-child)').click(function () {
     if ($('.pagination li:last-child').index() <= pagesData.total_pages) {
-      $('.pagination li').removeClass('font-900 selected-pagination')
-      $('.pagination li').addClass('unselected-pagination')
-      $(this).addClass('font-900 selected-pagination')
+      $('.pagination a').removeClass('font-900 selected-pagination font-white')
+      $('.pagination a').addClass('unselected-pagination')
+      $(this).find('a').addClass('font-900 selected-pagination')
       index = $(this).index()
     } else alert('目前頁數未滿足切換條件!')
   })
+
   index = Number(pagesData.current_page) - 1
 
   console.log(index)
   $('.pagination li:last-child').click(function () {
     if (pagesData.has_next) {
       if (index < 4) {
-        $(`.pagination li:nth-child(${index + 1})`).removeClass(
-          'font-900 selected-pagination'
+        $(`.pagination li:nth-child(${index + 1})`).find('a').removeClass(
+          'font-900 selected-pagination font-white'
         )
         $(`.pagination li:nth-child(${index + 1})`)
-        $(`.pagination li:nth-child(${index + 2})`).addClass(
+        $(`.pagination li:nth-child(${index + 2})`).find('a').addClass(
           'font-900 selected-pagination'
         )
         index += 1
