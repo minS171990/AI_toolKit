@@ -1490,8 +1490,17 @@ img {
   }
 }
 
-@media (max-width: 567px) {
+@media (max-width: 524px) {
+  .padding-3 {
+    padding: 0;
+  }
+  .copyright, .backToTop {
+    padding-top: 32px;
+    padding-bottom: 12px;
+  }
   .footer ul {
+    padding-top: 12px;
+    padding-bottom: 32px;
     order: 1;
   }
 }
