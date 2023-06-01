@@ -184,6 +184,45 @@ function paginationProcess (pagesData) {
   console.log(index)
   $('.pagination li:last-child').click(function () {
     if (pagesData.has_next) {
+      if (!((index + 1) % 5 == 0)) { //[0]->1, [4]->5, [9]->10
+        $(`.pagination li:nth-child(${(index + 1) % 5})`).find('a').removeClass(
+          'selected-pagination'
+        )
+        $(`.pagination li:nth-child(${(index + 2) % 5})`).find('a').addClass(
+          'selected-pagination'
+        )
+        if((index + 1) % 5 == 4) {
+          $(`.pagination li:nth-child(${(index + 1) % 5})`).find('a').removeClass(
+            'selected-pagination'
+          )
+          $(`.pagination li:nth-child(${5})`).find('a').addClass(
+            'selected-pagination'
+          )
+        }
+        index += 1
+        console.log(index)
+      } else {
+        $(`.pagination li:nth-child(${5})`).find('a').removeClass(
+          'selected-pagination'
+        )
+        $(`.pagination li:nth-child(${(index + 2) % 5})`).find('a').addClass(
+          'selected-pagination'
+        )
+        for(let i = 1; i<=5; i++){
+          $(`.pagination li:nth-child(${i})`).find('a').text(`${index+(i+1)}`);
+        }
+        data.page = index + 2;
+        console.log(data)
+        renderData();
+        index += 1;
+      }
+    } else alert('沒有下個分頁!')
+  })
+}
+
+function oldNextPage() { //Since line-185
+  $('.pagination li:last-child').click(function () {
+    if (pagesData.has_next) {
       if (index < 4) {
         $(`.pagination li:nth-child(${index + 1})`).find('a').removeClass(
           'selected-pagination'
@@ -332,7 +371,7 @@ if(location.pathname!="/price.html"){
 
 
 /*ToDo*/
-/* # 分頁區逢五 */
+/* # 分頁區逢五 (完成，待測試)*/ 
 //     # 獲取當前頁碼
 //     # 獲取下一頁的資料
 //     # 如果有下一頁
