@@ -1,146 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css\all.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="scss\all.css">
     <title>AI工具王</title>
 </head>
+
 <body>
     <div class="container">
         <div class="header updown-1 mb40 d-flex jcsb">
             <div class="logo">
-                <h1><a href="#"><img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/logo.png" alt=""></a></h1>
+                <h1><a href="#"><img
+                            src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/logo.png"
+                            alt="logo">AI工具王</a></h1>
             </div>
             <ul class="submenu d-flex">
-                <li><a class="font-700 font-white pr10" href="index.html">首頁</a></li>
-                <li class="font-700 font-white pl10">定價</li>
+                <li><a class="font-700 font-white pr10" href="index.html" data-transition="slide">首頁</a></li>
+                <li><a class="font-700 font-white pl10" href="price.html" data-transition="slide">定價</a></li>
+                <!-- <li><a class="font-700 font-white pr10" href="index.html">首頁</a></li>
+                <li class="font-700 font-white pl10">定價</li> -->
             </ul>
-          <img class="menu-top" src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/icons/menu.png?raw=true" alt="">
-          <img class="menu-top-close"
-            src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/icons/close.png?raw=true"
-            alt="">
+            <img class="menu-top"
+                src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/icons/menu.png?raw=true"
+                alt="">
+            <img class="menu-top-close"
+                src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/icons/close.png?raw=true"
+                alt="">
         </div>
         <div class="banner-price font-900 lh-main-title jcsb d-flex fdc mb238">
-            <h2 class="banner-price-1 font-6 mb80">用多少，<br>付多少</h2>
-            <h3 class="banner-price-2 font-4 asfe">我們相信，最靈活的取用機制，才能最大化的幫助你業務的推動。</h3>
+            <h2 class="banner-price-top-slogon font-6 mb80">用多少，<br>付多少</h2>
+            <h3 class="banner-price-bottom-slogon font-4 asfe">我們相信，最靈活的取用機制，才能最大化的幫助你業務的推動。</h3>
         </div>
-    </div>    
-        <div class="container-3">
-            <div class="animation-2 d-flex mb160">
-                <div class="img-box d-flex jcs">
-                    <img class="ani3" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/deco.png" alt="grass">
-                    <img class="ani2"src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/deco.png" alt="grass">
-                    <img class="ani1"src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/deco.png" alt="grass">
-                </div>
+    </div>
+    <div class="container-price-mid">
+        <div class="animation-full d-flex mb160">
+            <div class="img-box d-flex jcs">
+                <img class="ani3"
+                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/deco.png"
+                    alt="grass">
+                <img class="ani2"
+                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/deco.png"
+                    alt="grass">
+                <img class="ani1"
+                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/deco.png"
+                    alt="grass">
             </div>
-            <h2 class="font-3 lh-main-title font-900 service-block">定價</h2>
-        <ul class="price-info gp24 mt80 d-flex wrap jcsb mb160">            
+        </div>
+        <h2 class="font-3 lh-main-title font-900 service-block">定價</h2>
+        <ul class="price-info gp24 mt80 d-flex wrap jcsb mb160">
             <li class="price-list">
                 <div>
                     <h2 class="font-3 lh-main-title font-900 mt20 ml32 mb12">琪琪</h2>
                     <ul class=" list-circle ml48 mb136 lh">
-                    <li>初級</li>
-                    <li>速度最快</li>
-                </ul>
+                        <li>初級</li>
+                        <li>速度最快</li>
+                    </ul>
                 </div>
                 <div class="token-bar d-flex jcsb updown-1 font-2">
                     <p class="font-900 token-price ml32">NT$5<span>／1k tokens</span></p>
                     <a class="font-white mr32 font-700" href="#">開始使用　<span class="material-symbols-outlined">
-call_made
-</span></a>
+                            call_made
+                        </span></a>
                 </div>
             </li>
             <li class="price-list d-flex jcsb fdc">
                 <div>
                     <h2 class="font-3 lh-main-title font-900 mt20 ml32 mb12">昊昊</h2>
                     <ul class=" list-circle ml48 mb136">
-                    <li>中級</li>
-                </ul>
+                        <li>中級</li>
+                    </ul>
                 </div>
                 <div class="token-bar d-flex jcsb updown-1 font-2">
                     <p class="font-900 token-price ml32">NT$5<span>／1k tokens</span></p>
                     <a class="font-white mr32 font-700" href="#">開始使用　<span class="material-symbols-outlined">
-call_made
-</span></a>
+                            call_made
+                        </span></a>
                 </div>
             </li>
             <li class="price-list d-flex jcsb fdc">
                 <div>
                     <h2 class="font-3 lh-main-title font-900 mt20 ml32 mb12">卡卡</h2>
                     <ul class=" list-circle ml48 mb136">
-                    <li>高級</li>
-                </ul>
+                        <li>高級</li>
+                    </ul>
                 </div>
                 <div class="token-bar d-flex jcsb updown-1 font-2">
                     <p class="font-900 token-price ml32">NT$5<span>／1k tokens</span></p>
                     <a class="font-white mr32 font-700" href="#">開始使用　<span class="material-symbols-outlined">
-call_made
-</span></a>
+                            call_made
+                        </span></a>
                 </div>
             </li>
             <li class="price-list d-flex jcsb fdc">
                 <div>
                     <h2 class="font-3 lh-main-title font-900 mt20 ml32 mb12">杰杰</h2>
                     <ul class=" list-circle ml48 mb136 lh">
-                    <li>最高級</li>
-                    <li>資訊最完善</li>
-                </ul>
+                        <li>最高級</li>
+                        <li>資訊最完善</li>
+                    </ul>
                 </div>
                 <div class="token-bar d-flex jcsb updown-1 font-2">
                     <p class="font-900 token-price ml32">NT$5<span>／1k tokens</span></p>
                     <a class="font-white mr32 font-700" href="#">開始使用　<span class="material-symbols-outlined">
-call_made
-</span></a>
+                            call_made
+                        </span></a>
                 </div>
             </li>
-        </div>
-        <div class="rules d-flex jcsb container-3 pb160">
-            <p class="font-3 font-900">使用規範</p>
-            <ul>
-                <li>
-                    <h3 class="font-4 font-900 mb24">守法</h3>
-                    <p class="font-3">請遵守相關的法規和政策，不得進行任何違法違規的活動。</p>
-                </li>
-                <li>
-                    <h3 class="font-4 font-900 mb24 mt40">資訊安全</h3>
-                    <p class="font-3">請務必保護好自己的帳號和密碼，不得將其透露給他人。</p>
-                </li>
-                <li>
-                    <h3 class="font-4 font-900 mb24 mt40">守密</h3>
-                    <p class="font-3">需對使用過程中產生的數據負責，不得擅自泄露數據。</p>
-                </li>
-            </ul>
-        </div>
+    </div>
+    <div class="rules d-flex jcsb container-price-mid pb160">
+        <p class="font-3 font-900 rules-title">使用規範</p>
+        <ul>
+            <li>
+                <h3 class="font-4 font-900 mb24">守法</h3>
+                <p class="font-3">請遵守相關的法規和政策，不得進行任何違法違規的活動。</p>
+            </li>
+            <li>
+                <h3 class="font-4 font-900 mb24 mt40">資訊安全</h3>
+                <p class="font-3">請務必保護好自己的帳號和密碼，不得將其透露給他人。</p>
+            </li>
+            <li>
+                <h3 class="font-4 font-900 mb24 mt40">守密</h3>
+                <p class="font-3">需對使用過程中產生的數據負責，不得擅自泄露數據。</p>
+            </li>
+        </ul>
+    </div>
     </div>
     <section class="bg-white pb162">
         <div class="middle">
             <h2 class="title-tool font-5 font-900 pt160">這些超酷的應用，都來自 AI工具王</h2>
-            <input class="search lh mt80 mb24 font-2" type="text" name="" id="" placeholder="輸入關鍵字查詢">
+            <input class="search lh mt80 mb24" type="text" name="" id="" placeholder="輸入關鍵字查詢">
             <div class="middle-bar d-flex jcsb aic mb40 lh">
-                <div class="box-select box-select-filter">篩選<span class="material-icons" style="margin-left: 12px;font-size: 16px;">
-                    tune
+                <div id="button-all-sort" class="box-select box-select-filter">篩選<span class="material-icons"
+                        style="margin-left: 12px;font-size: 16px;">
+                        tune
                     </span></div>
+                    <div class="all-sort-drop d-flex fdc">
+                        <ul class="sort-model d-flex fdc">
+                            <li class="default-mouse sort-model-title">所有模型</li>
+                            <li class="sort-button d-flex w100 jcsb"
+                                style="padding-bottom: 16px;">gpt3.5<span
+                                    class="aic check material-symbols-outlined">
+                                    check
+                                </span></li>
+                        </ul>
+                        <ul class="sort-type d-flex fdc">
+                            <li class="default-mouse sort-model-title"
+                                style="padding-top: 24px;">所有類型</li>
+                            <li class="sort-button d-flex w100 jcsb">問答服務<span
+                                    class="aic check material-symbols-outlined">
+                                    check
+                                </span></li>
+                            <li class="sort-button d-flex w100 jcsb">虛擬客服<span
+                                    class="aic check material-symbols-outlined">
+                                    check
+                                </span></li>
+                            <li class="sort-button d-flex w100 jcsb">生活應用<span
+                                    class="aic check material-symbols-outlined">
+                                    check
+                                </span></li>
+                            <li class="sort-button d-flex w100 jcsb">程式知識<span
+                                    class="aic check material-symbols-outlined">
+                                    check
+                                </span></li>
+                            <li class="sort-button d-flex w100 jcsb">翻譯助手<span
+                                    class="aic check material-symbols-outlined">
+                                    check
+                                </span></li>
+                            <li class="sort-button d-flex w100 jcsb">行銷文案<span
+                                    class="aic check material-symbols-outlined">
+                                    check
+                                </span></li>
+                        </ul>
+                    </div>
                 <ul class="selection-bar d-flex jcsb">
                     <li><a class="d-block selected font-700">全部</a></li>
-                    <li><a class="d-block unselected">聊天</a></li>
-                    <li><a class="d-block unselected">影像辨識</a></li>
-                    <li><a class="d-block unselected">翻譯</a></li>
-                    <li><a class="d-block unselected">行銷</a></li>
-                    <li><a class="d-block unselected">客服</a></li>
-                    <li><a class="d-block unselected">生產力</a></li>
                     <li><a class="d-block unselected">問答服務</a></li>
+                    <li><a class="d-block unselected">虛擬客服</a></li>
+                    <li><a class="d-block unselected">生活應用</a></li>
+                    <li><a class="d-block unselected">程式知識</a></li>
+                    <li><a class="d-block unselected">翻譯助手</a></li>
+                    <li><a class="d-block unselected">行銷文案</a></li>
                 </ul>
-                <div id="button-date" class="box-select">由新到舊<span class="material-icons">keyboard_arrow_down</span></div>
+                <div id="button-date" class="box-select">由新到舊<span class="material-icons">keyboard_arrow_down</span>
+                </div>
                 <div class="date-sort-drop box-select d-flex fdc">
                     <div id="to-old-btn" class="to-new-select">由新到舊</div>
                     <div id="to-new-btn" class="to-new-select">由舊到新</div>
@@ -149,8 +201,9 @@ call_made
             <ul id="tools" class="tools-list d-flex wrap jcsb">
                 <li class="tools mb24 d-flex fdc jcsb">
                     <div class="img-container">
-                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool1.png?raw=true" alt="AI工具一" class="img">    
-                    </div>  
+                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool1.png?raw=true"
+                            alt="AI工具一" class="img">
+                    </div>
                     <div class="d-flex aic fdc mt20 mb20">
                         <h3 class="main-title mb12 font-2 font-900 lh-main-title">Chatbot Builder</h3>
                         <p class="main-text font-0 lh font-gray">建立智能化的聊天機器人，解答常見問題、提供客戶支援、收集反饋等。</p>
@@ -168,8 +221,9 @@ call_made
                 </li>
                 <li class="tools mb24 d-flex fdc jcsb">
                     <div class="img-container">
-                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool2.png?raw=true" alt="AI工具二" class="img">
-                    </div>  
+                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool2.png?raw=true"
+                            alt="AI工具二" class="img">
+                    </div>
                     <div class="d-flex aic fdc mt20 mb20">
                         <h3 class="main-title mb12 font-2 font-900 lh-main-title">Image Recognition Platform</h3>
                         <p class="main-text font-0 lh font-gray mb20">專業的圖像識別平台，識別圖像、分類、標記等。</p>
@@ -187,25 +241,28 @@ call_made
                 </li>
                 <li class="tools mb24 d-flex fdc jcsb">
                     <div class="img-container">
-                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool3.png?raw=true" alt="AI工具三" class="img">
-                    </div>  
+                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool3.png?raw=true"
+                            alt="AI工具三" class="img">
+                    </div>
                     <div class="d-flex aic fdc mt20 mb20">
                         <h3 class="main-title mb12 font-2 font-900 lh-main-title">Language Translation API</h3>
                         <p class="main-text font-0 lh font-gray">專業的語言翻譯 API，實現文本翻譯功能，支援多種格式的文本。</p>
                     </div>
-                    <div><div class="d-flex jcsb outline">
-                        <h3 class="padding-2 lh font-700">AI模型</h3>
-                        <span class="padding-2 lh">琪琪</span>
-                    </div>
-                    <div class="d-flex jcsb">
-                        <a class="tools-tag-1 d-flex jcsb-left padding-2" href="#">#翻譯</a>
-                        <a class="material-icons padding-2" href="#">share</a>
-                    </div>
+                    <div>
+                        <div class="d-flex jcsb outline">
+                            <h3 class="padding-2 lh font-700">AI模型</h3>
+                            <span class="padding-2 lh">琪琪</span>
+                        </div>
+                        <div class="d-flex jcsb">
+                            <a class="tools-tag-1 d-flex jcsb-left padding-2" href="#">#翻譯</a>
+                            <a class="material-icons padding-2" href="#">share</a>
+                        </div>
                 </li>
                 <li class="tools mb24 d-flex fdc jcsb">
                     <div class="img-container">
-                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool4.png?raw=true" alt="AI工具四" class="img">
-                    </div>  
+                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool4.png?raw=true"
+                            alt="AI工具四" class="img">
+                    </div>
                     <div class="d-flex aic fdc mt20 mb20">
                         <h3 class="main-title mb12 font-2 font-900 lh-main-title">Sentiment Analysis API</h3>
                         <p class="main-text font-0 lh font-gray">自動識別文本中的情感傾向，包括正向、負向和中性等。適用於情感分析、社交媒體監控、市場調查等。</p>
@@ -220,30 +277,33 @@ call_made
                             <a class="material-icons padding-2" href="#">share</a>
                         </div>
                     </div>
-                    
+
                 </li>
                 <li class="tools mb24 d-flex fdc jcsb">
                     <div class="img-container">
-                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool5.png?raw=true" alt="AI工具五" class="img">
-                    </div>  
+                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool5.png?raw=true"
+                            alt="AI工具五" class="img">
+                    </div>
                     <div class="d-flex aic fdc mt20 mb20">
                         <h3 class="main-title mb12 font-2 font-900 lh-main-title">Fraud Detection Platform</h3>
                         <p class="main-text font-0 lh font-gray mb20">預防詐騙活動，適用於銀行、金融、電商等。</p>
                     </div>
                     <div>
                         <div class="d-flex jcsb outline">
-                        <h3 class="padding-2 lh font-700">AI模型</h3>
-                        <span class="padding-2 lh">卡卡</span>
+                            <h3 class="padding-2 lh font-700">AI模型</h3>
+                            <span class="padding-2 lh">卡卡</span>
+                        </div>
+                        <div class="d-flex jcsb">
+                            <a class="tools-tag-1 d-flex jcsb-left padding-2" href="#">#客服</a>
+                            <a class="material-icons padding-2" href="#">share</a>
+                        </div>
                     </div>
-                    <div class="d-flex jcsb">
-                        <a class="tools-tag-1 d-flex jcsb-left padding-2" href="#">#客服</a>
-                        <a class="material-icons padding-2" href="#">share</a>
-                    </div></div>
                 </li>
                 <li class="tools mb24 d-flex fdc jcsb">
                     <div class="img-container">
-                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool6.png?raw=true" alt="AI工具六" class="img">
-                    </div>  
+                        <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool6.png?raw=true"
+                            alt="AI工具六" class="img">
+                    </div>
                     <div class="d-flex aic fdc mt20 mb20">
                         <h3 class="main-title mb12 font-2 font-900 lh-main-title">Voice Assistant SDK</h3>
                         <p class="main-text font-0 lh font-gray">通過語音控制應用程式、設備，實現多種功能，例如播放音樂、查詢天氣、發送信息等。</p>
@@ -261,7 +321,7 @@ call_made
                 </li>
             </ul>
             <ul class="pagination d-flex jcend font-700 mt16">
-                <li><a class="d-block font-900 selected-pagination">1</a></li>
+                <li><a class="d-block selected-pagination">1</a></li>
                 <li><a class="d-block unselected-pagination">2</a></li>
                 <li><a class="d-block unselected-pagination">3</a></li>
                 <li><a class="d-block unselected-pagination">4</a></li>
@@ -272,70 +332,89 @@ call_made
                         </span></a></li>
             </ul>
         </div>
-    </section> 
-    <div class="container-3 pt160">
+    </section>
+    <div class="container-price-mid pt160">
         <div class="question-section d-flex jcsb mb160">
             <h2 class="font-3 font-900">常見問題</h2>
             <ul class="q-a font-2 font-900">
-                <li class="q1 mb16 updown-1">
+                <li class="mb16 updown-1">
                     <div class="q-container d-flex">
-                        <span class="icon-q-1 ml40 mr20 material-symbols-outlined">add</span>
+                        <span class="icon-add ml40 mr20 material-symbols-outlined">add</span>
+                        <span class="icon-remove ml40 mr20 material-symbols-outlined">remove</span>
                         <p>如何選擇適合的AI模型？</p>
-                    </div>        
-                    <p class="ans1 lh">選擇適合的 AI 模型需要考慮您的應用場景、需要解決的問題、可用的資源以及預算等因素。可以通過對比不同模型的性能、準確率、速度等指標，以及與其他用戶的評價與反饋，來選擇最適合的模型。</p>
+                    </div>
+                    <p class="ans lh">選擇適合的 AI
+                        模型需要考慮您的應用場景、需要解決的問題、可用的資源以及預算等因素。可以通過對比不同模型的性能、準確率、速度等指標，以及與其他用戶的評價與反饋，來選擇最適合的模型。</p>
                 </li>
-                <li class="q2 mb16 updown-1">
+                <li class="mb16 updown-1">
                     <div class="q-container d-flex">
-                        <span class="icon-q-2 ml40 mr20 material-symbols-outlined">add</span>
+                        <span class="icon-add ml40 mr20 material-symbols-outlined">add</span>
+                        <span class="icon-remove ml40 mr20 material-symbols-outlined">remove</span>
                         <p>租用模型的費用是如何計算的？</p>
-                    </div>         
-                    <p class="ans2 lh">租用模型的費用通常會根據模型的性能和使用時間等因素進行計算。具體而言，模型的性能可以根據其精度、速度、暫用資源等指標來評估；而使用時間可以根據租用時間的長短來計算，通常會按小時、天或月來計算。綜合考慮這些因素，系統會自動算出對應的租用費用。</p>
+                    </div>
+                    <p class="ans lh">
+                        租用模型的費用通常會根據模型的性能和使用時間等因素進行計算。具體而言，模型的性能可以根據其精度、速度、暫用資源等指標來評估；而使用時間可以根據租用時間的長短來計算，通常會按小時、天或月來計算。綜合考慮這些因素，系統會自動算出對應的租用費用。
+                    </p>
                 </li>
-                <li class="q3 mb16 updown-1">
+                <li class="mb16 updown-1">
                     <div class="q-container d-flex">
-                        <span class="icon-q-3 ml40 mr20 material-symbols-outlined">add</span>
+                        <span class="icon-add ml40 mr20 material-symbols-outlined">add</span>
+                        <span class="icon-remove ml40 mr20 material-symbols-outlined">remove</span>
                         <p>如何進行付款？</p>
                     </div>
-                    <p class="ans3 lh">付款方式可以通過網站上提供的宴上支付平台進行支付。具體而言，您可以選擇信用卡、銀行轉帳電子錢包等不同的支付方式進行支付。在支付前，您需要先登錄網站並選擇適合的租用方案，系統會自動計算出對應的租用欸用和支付金額，然後您可以選擇適合的支付方式進行支付。完成支付後，系統會自動向您提供相應的服務。</p>
+                    <p class="ans lh">
+                        付款方式可以通過網站上提供的宴上支付平台進行支付。具體而言，您可以選擇信用卡、銀行轉帳電子錢包等不同的支付方式進行支付。在支付前，您需要先登錄網站並選擇適合的租用方案，系統會自動計算出對應的租用欸用和支付金額，然後您可以選擇適合的支付方式進行支付。完成支付後，系統會自動向您提供相應的服務。
+                    </p>
                 </li>
-                <li class="q4 mb16 updown-1">
+                <li class="mb16 updown-1">
                     <div class="q-container d-flex">
-                        <span class="icon-q-4 ml40 mr20 material-symbols-outlined">add</span>
+                        <span class="icon-add ml40 mr20 material-symbols-outlined">add</span>
+                        <span class="icon-remove ml40 mr20 material-symbols-outlined">remove</span>
                         <p>租用模型的期限是多久？</p>
-                    </div>    
-                    <p class="ans4 lh">租用模型的期限可以根據您的需求進行設置，通常可以選擇幾個小時、幾天或幾個月等不同的時間段。</p>
+                    </div>
+                    <p class="ans lh">租用模型的期限可以根據您的需求進行設置，通常可以選擇幾個小時、幾天或幾個月等不同的時間段。</p>
                 </li>
-                <li class="q5 updown-1">
+                <li class="updown-1">
                     <div class="q-container d-flex">
-                        <span class="icon-q-5 ml40 mr20 material-symbols-outlined">add</span>
+                        <span class="icon-add ml40 mr20 material-symbols-outlined">add</span>
+                        <span class="icon-remove ml40 mr20 material-symbols-outlined">remove</span>
                         <p>如果在使用過程中遇到問題，應該怎麼處理？</p>
-                    </div>                        
-                    <p class="ans5 lh">如果在使用過程中遇到問題，您可以聯繫惡扶或技術支持人員進行諮詢或報告問題。您也可以。您也可以通過網站上的幫助中心或社區論壇尋找相關的解決方案和回答。</p>
+                    </div>
+                    <p class="ans lh">如果在使用過程中遇到問題，您可以聯繫惡扶或技術支持人員進行諮詢或報告問題。您也可以。您也可以通過網站上的幫助中心或社區論壇尋找相關的解決方案和回答。</p>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="container-2">
+    <div class="container-lower-part">
         <div class="sitemap d-flex jcsb">
             <ul class="map-list mt80 mb80 lh-main-title">
                 <li><a class="font-white font-5 font-900" href="index.html">首頁</a></li>
-                <li class="font-white font-5 font-900">定價</li>
+                <li><a class="font-white font-5 font-900" href="price.html">定價</a></li>
+                <!-- <li class="font-white font-5 font-900">定價</li> -->
             </ul>
-            <a class="logo d-flex mt80" href="#"><img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/logo.png" alt=""></a>
+            <a class="logo d-flex mt80" href="#"><img
+                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/logo.png"
+                    alt=""></a>
         </div>
-        <div class="footer lh font-700 d-flex jcsb">
-                <div class="copyright padding-3">AI工具王 © 2023</div>
-                <ul class="d-flex">
-                    <li><a class="font-white mr20 d-block padding-3" href="">Facebook</a></li>
-                    <li><a class="font-white mr20 d-block padding-3" href="">Twitter</a></li>
-                    <li><a class="font-white d-block padding-3" href="">Instagram</a></li>
-                </ul>
-            <div class="backToTop"><a class="d-block font-white padding-3" href="#">Back to top　<span class="material-symbols-outlined">
-                arrow_upward
-                </span></a></div>
+        <div class="footer lh font-700 d-flex">
+            <div class="copyright padding-3">AI工具王 © 2023</div>
+            <ul class="d-flex">
+                <li><a class="font-white mr20 d-block padding-3" href>Facebook</a></li>
+                <li><a class="font-white mr20 d-block padding-3" href>Twitter</a></li>
+                <li><a class="font-white d-block padding-3" href>Instagram</a></li>
+            </ul>
+            <div class="backToTop"><a
+                    class="d-block font-white padding-3" href="#">Back
+                    to top <span class="pl12 font-1 material-symbols-outlined">
+                        arrow_upward
+                    </span></a></div>
         </div>
     </div>
-</div>
-</div>       
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="js/all.js"></script>
 </body>
+
 </html>

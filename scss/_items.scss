@@ -1,0 +1,348 @@
+.blackbox1 {
+    background: linear-gradient(to right, #000 20%, transparent 100%);
+    width: 15%;
+    height: 91px;
+    position: absolute;
+    left: 0;
+}
+
+.blackbox2 {
+    /*Sandy*/
+    background: linear-gradient(to left, #000 60%, transparent 100%);
+    width: 15%;
+    height: 91px;
+    position: absolute;
+    right: 0;
+}
+
+.list-circle {
+    list-style: disc;
+}
+
+.btn {
+    display: block;
+    border-radius: 16px;
+    width: 160px;
+    outline: 1px solid white;
+    padding: 20px 40px;
+    padding-bottom: 20px;
+}
+
+.btn-white {
+    color: white;
+}
+
+.btn:hover {
+    color: black;
+    background: white
+}
+
+.search {
+    width: calc(100% - 30px);
+    height: 64px;
+    background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/icons/search.png?raw=true);
+    background-size: 24px 24px;
+    background-color: #F2F2F2;
+    background-repeat: no-repeat;
+    background-position: 40px, 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: none;
+    border-radius: 16px;
+    padding-left: 76px;
+    margin-left: 15px;
+}
+
+.box-select {
+    display: block;
+    text-align: center;
+    border-radius: 16px;
+    width: 164px;
+    height: 64px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #F2F2F2;
+    cursor: pointer;
+}
+
+#button-date.active {
+    font-weight: bold;
+}
+
+#button-date:hover {
+    font-weight: bold;
+}
+
+#to-new-btn:hover,
+#to-old-btn:hover {
+    background: #F2F2F2;
+    width: 144px;
+}
+
+.box-select-filter {
+    width: 132px;
+}
+
+.unselected {
+    color: #919191;
+    border-radius: 16px;
+    width: 64px;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    cursor: pointer;
+}
+
+.unselected:hover {
+    color: black;
+}
+
+.selected {
+    color: black;
+    cursor: default;
+    background: #F2F2F2;
+    border-radius: 16px;
+    width: 64px;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.unselected-pagination {
+    cursor: pointer;
+    color: black;
+}
+
+.selected-pagination {
+    cursor: default;
+    background: black;
+    color: white;
+    border-radius: 16px;
+    width: 64px;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-weight: 900;
+}
+
+.material-icons:hover,
+.tools-tag-1:hover {
+    color: gray;
+}
+
+.tools {
+    width: 32%;
+    border-radius: 16px;
+    overflow: hidden;
+    outline: 1px solid #F2F2F2;
+    cursor: pointer;
+}
+
+.tools:hover {
+    outline: 3px solid #8E8E8E;
+}
+
+.tools:hover .img {
+    transform: scale(1.22);
+    transition: 600ms;
+}
+
+.box-bg {
+    background: #FFFFFF14;
+    box-shadow: 0px 100px 80px rgba(18, 18, 18, 0.07), 0px 41.7776px 33.4221px rgba(18, 18, 18, 0.0503198), 0px 22.3363px 17.869px rgba(18, 18, 18, 0.0417275), 0px 12.5216px 10.0172px rgba(18, 18, 18, 0.035), 0px 6.6501px 5.32008px rgba(18, 18, 18, 0.0282725), 0px 2.76726px 2.21381px rgba(18, 18, 18, 0.0196802);
+}
+
+.star-icon {
+    width: 96px;
+}
+
+.box-weight {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+.head {
+    width: 48px;
+    height: 48px;
+}
+
+
+.middle-bar {
+    width: 100%;
+    position: relative;
+    z-index: 0;
+}
+
+.pagination li {
+    text-align: center;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.pagination a {
+    padding: 16px;
+}
+
+.pagination a.active {
+    font-weight: 900;
+    cursor: default;
+    background: black;
+    color: white;
+    border-radius: 16px;
+    width: 64px;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-weight: normal;
+}
+
+.pagination a:hover {
+    color: #696969;
+    font-size: 20px;
+}
+
+.material-symbols-outlined {
+    display: block;
+}
+
+.material-symbols-outlined:hover {
+    cursor: pointer;
+}
+
+.icon-add {
+    display: block;
+}
+
+.icon-remove {
+    display: none;
+}
+
+.dot {
+    justify-content: center;
+    align-items: center;
+}
+
+.dot-1 {
+    display: none;
+    background-color: white;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+.dot-2 {
+    display: none;
+    background-color: gray;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.dot-3 {
+    display: none;
+    background-color: gray;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 4px;
+}
+
+#downlist {
+    margin-top: 0;
+    margin-left: 88%;
+    border-radius: 0;
+}
+
+.swiper-pagination-bullet {
+    background-color: gray;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+}
+
+.swiper-pagination {
+    position: relative;
+    margin-top: 24px;
+    vertical-align: middle;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide {
+    height: auto;
+}
+
+.swiper-wrapper {
+    margin-bottom: 160px;
+}
+
+@media (max-width: 936px) {
+    .swiper-wrapper {
+        margin-bottom: 0px;
+    }
+
+    .swiper-pagination {
+        margin-bottom: 120px;
+    }
+}
+
+.sort-model-title {
+    color: rgba(145, 145, 145, 1);
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 0px 32px 0px 40px;
+}
+
+.sort-model, .sort-type {
+    gap: 8px;
+    cursor: pointer;
+}
+
+.sort-model {
+    align-content: space-between;
+}
+
+.sort-model::after {
+    content: '';
+    width: 168px;
+    display: block;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(145, 145, 145, 1);
+  }
+
+.check {
+    font-size: 16px;
+    display: none;
+}
+
+.default-mouse {
+    cursor: default;
+}
+
+.sort-button {
+    padding: 0px 32px 0px 40px;
+}
+.sort-button:hover {
+    background: #F2F2F2;
+}
+
+#button-all-sort.active {
+    font-weight: bold;
+}

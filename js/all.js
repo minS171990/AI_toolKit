@@ -1,10 +1,10 @@
 $(document).ready(function () {
   refresh()
-  menuButton()
-  req(data)
-  find(data)
-  filter(data)
-  sort()
+  createMenuButton()
+  getWorksData(data)
+  searchData(data)
+  filterData(data)
+  sortData()
 
   console.log($('.pagination li'))
   $('.selection-bar a').click(function () {
@@ -14,20 +14,20 @@ $(document).ready(function () {
   })
 
   //切換分頁(預寫)
-  // var index = 0;
+  var index = 0;
   // console.log($('.pagination a'))
   // $('.pagination li:not(:last-child)').click(function () {
-  //   $('.pagination a').removeClass('font-900 selected-pagination font-white');
+  //   $('.pagination a').removeClass('selected-pagination');
   //   $('.pagination a').addClass('unselected-pagination');
-  //   $(this).find('a').addClass('font-900 selected-pagination font-white');
+  //   $(this).find('a').toggleClass('selected-pagination');
   //   index = $(this).index();
   // });
 
+  // //按下一頁切換分頁
   // $('.pagination li:last-child').click(function () {
   //   if(index < 4){
-  //     $(`.pagination li:nth-child(${index+1})`).find('a').removeClass('font-900 selected-pagination font-white');
-  //     $(`.pagination li:nth-child(${index+1})`);
-  //     $(`.pagination li:nth-child(${index+2})`).find('a').addClass('font-900 selected-pagination');
+  //     $(`.pagination li:nth-child(${index+1})`).find('a').removeClass('selected-pagination');
+  //     $(`.pagination li:nth-child(${index+2})`).find('a').addClass('selected-pagination');
   //     index += 1;
   //   }
   // });
@@ -37,12 +37,23 @@ $(document).ready(function () {
   })
 
   $('.date-sort-drop').hide()
+  $('.all-sort-drop').hide()
 
   $('#button-date').click(function () {
     $('.date-sort-drop').slideToggle()
+    $("#button-date").toggleClass('active')
   })
 
-  dotAction()
+  $('#button-all-sort').click(function () {
+    $('.all-sort-drop').slideToggle()
+    $("#button-all-sort").toggleClass('active')
+  })
+
+  $('.sort-button').click(function() {
+    $(this).find('span').toggleClass('d-flex')
+  })
+
+  $('.date-sort-drop').hide()
 
   //過渡分頁特效
   var btns = ['.submenu a', '.map-list a', '.submenu2 a']
@@ -50,53 +61,18 @@ $(document).ready(function () {
     gradLoad(e)
   }
 
-  //下拉式問答
-  for (let i = 0; i <= 5; i++) {
-    clickButtonFunc(`.q${i}`, `.ans${i}`, `.icon-q-${i}`)
-  }
+  $('.q-a li').click(function(e) {
+    $(this).find('.ans').slideToggle(function (){
+      $(this).find('.ans').toggleClass('active');
+    })
+    $(this).find('.icon-remove').toggleClass('d-block');
+    $(this).find('.icon-add').toggleClass('d-none');
+  });
 })
 
-function clickButtonFunc (q, a, icon) {
-  $(q).click(function () {
-    console.log($(a).css('display'))
-    if ($(a).css('display') == 'none') $(icon).text('remove')
-    if ($(a).css('display') !== 'none') $(icon).text('add')
-    $(a).slideToggle()
-  })
-}
-
-function menuButton () {
-  var main = [
-    'index.html',
-    'page2.html',
-    'page3.html',
-    'page4.html',
-    'page5.html'
-  ]
-
-  var pricepages = [
-    'price.html',
-    'p-page2.html',
-    'p-page3.html',
-    'p-page4.html',
-    'p-page5.html'
-  ]
-  try {
-    var path = document.location.pathname.match(/[^\/]+$/)[0]
-    // console.log(path)
-    if (main.includes(path))
-      $('.header').after(
-        '<ul class="submenu2" style="display:none"><li class="font-700 font-white">首頁</li><li><a class="font-700 font-white" href="price.html">定價</a></li></ul>'
-      )
-    else if (pricepages.includes(path))
-      $('.header').after(
-        '<ul class="submenu2" style="display:none"><li><a class="font-700 font-white" href="index.html">首頁</a></li><li class="font-700 font-white">定價</li></ul>'
-      )
-  } catch {
-    $('.header').after(
-      '<ul class="submenu2" style="display:none"><li class="font-700 font-white">首頁</li><li><a class="font-700 font-white" href="price.html">定價</a></li></ul>'
-    )
-  }
+function createMenuButton () {
+  $('.header').after(
+    '<ul class="submenu2" style="display:none"><li><a class="font-700 font-white" href="index.html">首頁</a></li><li><a class="font-700 font-white" href="price.html">定價</a></li></ul>')
   $('.menu-top').on('click', function () {
     hideBlock()
     $('.menu-top').hide()
@@ -148,8 +124,8 @@ let controlingBlock = [
   '.bg-white',
   '.callToAction',
   '.sitemap',
-  '.container-3',
-  '.backToTop'
+  '.container-price-mid',
+  '.backToTop',
 ]
 
 function hideBlock () {
@@ -179,7 +155,7 @@ const data = {
   search: ''
 }
 
-function req ({ type, sort, page, search }) {
+function getWorksData ({ type, sort, page, search }) {
   const path = 'https://2023-engineer-camp.zeabur.app'
   let link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`
   axios.get(link).then(function (res) {
@@ -196,10 +172,10 @@ function req ({ type, sort, page, search }) {
 function paginationProcess (pagesData) {
   $('.pagination li:not(:last-child)').click(function () {
     if ($('.pagination li:last-child').index() <= pagesData.total_pages) {
-      $('.pagination a').removeClass('font-900 selected-pagination font-white')
-      $('.pagination a').addClass('unselected-pagination')
-      $(this).find('a').addClass('font-900 selected-pagination')
-      index = $(this).index()
+      $('.pagination a').removeClass('selected-pagination');
+      $('.pagination a').addClass('unselected-pagination');
+      $(this).find('a').toggleClass('selected-pagination');
+      index = $(this).index();
     } else alert('目前頁數未滿足切換條件!')
   })
 
@@ -210,11 +186,10 @@ function paginationProcess (pagesData) {
     if (pagesData.has_next) {
       if (index < 4) {
         $(`.pagination li:nth-child(${index + 1})`).find('a').removeClass(
-          'font-900 selected-pagination font-white'
+          'selected-pagination'
         )
-        $(`.pagination li:nth-child(${index + 1})`)
         $(`.pagination li:nth-child(${index + 2})`).find('a').addClass(
-          'font-900 selected-pagination'
+          'selected-pagination'
         )
         index += 1
         console.log(index)
@@ -222,7 +197,7 @@ function paginationProcess (pagesData) {
     } else alert('沒有下個分頁!')
   })
 }
-function find (data) {
+function searchData (data) {
   const search = document.querySelector('.search')
   $('.search').keypress(e => {
     if (e.keyCode === 13) {
@@ -233,7 +208,7 @@ function find (data) {
   })
 }
 
-function filter (data) {
+function filterData (data) {
   const filters = document.querySelectorAll('.selection-bar a')
   console.log(filters)
   filters.forEach(e => {
@@ -268,73 +243,6 @@ function getData ({ type, sort, page, search }) {
   })
 }
 
-function dotAction () {
-  var dots = {
-    '.dot-1': [0, $('.container').width() * 0.5],
-    '.dot-2': [$('.container').width() * 0.5, $('.container').width() * 1.5],
-    '.dot-3': [$('.container').width() * 1.5, $('.container').width() * 2]
-  }
-
-  $('.container-4').on('scroll', function () {
-    var scrollLeft = $('.container-4').scrollLeft()
-    for (var dot in dots) {
-      if (scrollLeft >= dots[dot][0] && scrollLeft < dots[dot][1]) {
-        dotSelect(dot)
-        for (var otherDot in dots) {
-          if (otherDot !== dot) {
-            dotReset(otherDot)
-          }
-        }
-      }
-    }
-  })
-
-  $('.dot-1').click(function () {
-    $('.container-4').animate({ scrollLeft: dots['.dot-1'] }, 1000)
-    dotSelect('.dot-1')
-    for (var otherDot in dots) {
-      if (otherDot !== '.dot-1') {
-        dotReset(otherDot)
-      }
-    }
-  })
-
-  $('.dot-2').click(function () {
-    $('.container-4').animate({ scrollLeft: dots['.dot-2'] }, 1000)
-    dotSelect('.dot-2')
-    for (var otherDot in dots) {
-      if (otherDot !== '.dot-2') {
-        dotReset(otherDot)
-      }
-    }
-  })
-
-  $('.dot-3').click(function () {
-    $('.container-4').animate({ scrollLeft: dots['.dot-3'] }, 1000)
-    dotSelect('.dot-3')
-    for (var otherDot in dots) {
-      if (otherDot !== '.dot-3') {
-        dotReset(otherDot)
-      }
-    }
-  })
-
-  function dotSelect (dot) {
-    $(dot).css({
-      width: '12px',
-      height: '12px',
-      'background-color': 'white'
-    })
-  }
-  function dotReset (dot) {
-    $(dot).css({
-      width: '8px',
-      height: '8px',
-      'background-color': 'gray'
-    })
-  }
-}
-
 function renderData () {
   let works = ''
   const list = document.querySelector('#tools')
@@ -362,7 +270,7 @@ function renderData () {
   list.innerHTML = works
 }
 
-function sort () {
+function sortData () {
   const dateSort = document.querySelector('#button-date')
   $("#to-old-btn").on("click", e => {
     e.preventDefault()
@@ -372,6 +280,7 @@ function sort () {
     dateSort.innerHTML = 
     '由新到舊<span class="material-icons">keyboard_arrow_down</span>'
     $('.date-sort-drop').slideToggle();
+    $("#button-date").toggleClass('active')
   })
   $("#to-new-btn").on("click", e => {
     e.preventDefault()
@@ -380,6 +289,7 @@ function sort () {
     dateSort.innerHTML =
     '由舊到新<span class="material-icons">keyboard_arrow_down</span>'
     $('.date-sort-drop').slideToggle();
+    $("#button-date").toggleClass('active')
   })
 }
 
@@ -390,3 +300,31 @@ function sort () {
 //     $('body').fadeOut(500).fadeIn(2000)
 //   })
 // }
+
+if(location.pathname!="/price.html"){
+  const swiper = new Swiper(".swiper", {
+    // 分頁
+    pagination: {
+      el: ".swiper-pagination"
+    },
+    breakpoints: {
+      936:{
+      slidesPerView: 3
+    },
+      731: {
+        slidesPerView: 2
+      },
+      375: {
+        slidesPerView: 1
+      }
+    },
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 24,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      paginationDistance: '100px'
+    }
+  });  
+}

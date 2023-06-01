@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    /* outline: 1px solid orange; */
+  }
+  
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  a {
+    text-decoration: None;
+    color: black;
+    display: block;
+  }
+  
+  body {
+    line-height: 1.2;
+    font-family: 'Noto Sans TC', sans-serif;
+    margin: 0 auto;
+    background: black;
+    color: white;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  

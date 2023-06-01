@@ -1,0 +1,145 @@
+.menu-top {
+    display: none;
+}
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.container-lower-part {
+    //container-2 -> container-lower-part
+    max-width: 1920px;
+    margin: 78px auto 0;
+    background: black;
+    color: white;
+}
+
+.header {
+    max-width: 1296px;
+    align-items: center;
+    margin: 0 auto;
+    border-bottom: 1px solid white;
+}
+
+.header a:hover {
+    color: #d3d3d3;
+}
+
+.logo a {
+    background-image: url(https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2023web-camp/logo.png);
+    background-size: contain;
+    width: 244.99px;
+    height: 40px;
+    text-indent: 101%;
+    white-space: nowrap;
+    float: left;
+    overflow: hidden;
+}
+
+.banner {
+    max-width: 1296px;
+    margin: 0 auto;
+}
+
+.banner h2 {
+    width: 100%;
+}
+
+.title-tool {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 1296px;
+}
+
+.bg-white {
+    width: 100%;
+    background: white;
+    color: black;
+    border-radius: 160px;
+    padding-bottom: 162px;
+}
+
+.middle {
+    margin: 0 auto;
+    max-width: 1296px;
+    position: relative;
+    width: calc(100% - 20px);
+    z-index: 0;
+}
+
+.main-title,
+.main-text {
+    width: 85%;
+}
+
+.sitemap {
+    max-width: 1296px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sitemap a {
+    display: block;
+}
+
+.sitemap a:hover {
+    color: gray;
+}
+
+.logo img {
+    width: 188.99px;
+    height: 40px;
+}
+
+.logo {
+    height: 40px;
+}
+
+.footer {
+    max-width: 1296px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.footer a:hover {
+    color: gray;
+}
+
+.backToTop a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.footer ul {
+    width: 70.1%;
+}
+
+.copyright {
+    width: 17.9%;
+    margin-left: 10px;
+}
+
+.backToTop {
+    width: 14%;
+}
+
+.selection-bar {
+    white-space: nowrap;
+    gap: 10px;
+}
+
+.menu-top-close {
+    display: none;
+    cursor: pointer;
+}
+
+.w100 {
+    width: 100%;
+}

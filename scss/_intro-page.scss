@@ -1,0 +1,126 @@
+.service {
+    max-width: 1296px;
+    margin: 0 auto;
+}
+
+.adv {
+    width: 31.9%;
+    border: 1px solid #525252;
+    border-radius: 16px;
+}
+
+.adv h2 {
+    width: 80.7%;
+}
+
+.service-block-big-slogon {
+    //service-block-2
+    width: 66%;
+}
+
+.partner img {
+    width: 160px;
+    height: 40px;
+    max-width: initial;
+}
+
+.partner {
+    max-width: 1296px;
+    margin: 160px auto 0px;
+}
+
+.shadow::after,
+.shadow::before {
+    content: "";
+    position: sticky;
+    width: 196px;
+    height: 40px;
+    top: 0;
+}
+
+.shadow {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    position: relative;
+}
+
+.shadow::before {
+    left: 0;
+    padding-right: 196px;
+    background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.991615) 11.79%, rgba(0, 0, 0, 0.967585) 21.38%, rgba(0, 0, 0, 0.9296) 29.12%, rgba(0, 0, 0, 0.879348) 35.34%, rgba(0, 0, 0, 0.818519) 40.37%, rgba(0, 0, 0, 0.7488) 44.56%, rgba(0, 0, 0, 0.671881) 48.24%, rgba(0, 0, 0, 0.589452) 51.76%, rgba(0, 0, 0, 0.5032) 55.44%, rgba(0, 0, 0, 0.414815) 59.63%, rgba(0, 0, 0, 0.325985) 64.66%, rgba(0, 0, 0, 0.2384) 70.88%, rgba(0, 0, 0, 0.153748) 78.62%, rgba(0, 0, 0, 0.0737185) 88.21%, rgba(0, 0, 0, 0) 100%);
+}
+
+.shadow::after {
+    right: 0;
+    padding-left: 196px;
+    background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.991615) 11.79%, rgba(0, 0, 0, 0.967585) 21.38%, rgba(0, 0, 0, 0.9296) 29.12%, rgba(0, 0, 0, 0.879348) 35.34%, rgba(0, 0, 0, 0.818519) 40.37%, rgba(0, 0, 0, 0.7488) 44.56%, rgba(0, 0, 0, 0.671881) 48.24%, rgba(0, 0, 0, 0.589452) 51.76%, rgba(0, 0, 0, 0.5032) 55.44%, rgba(0, 0, 0, 0.414815) 59.63%, rgba(0, 0, 0, 0.325985) 64.66%, rgba(0, 0, 0, 0.2384) 70.88%, rgba(0, 0, 0, 0.153748) 78.62%, rgba(0, 0, 0, 0.0737185) 88.21%, rgba(0, 0, 0, 0) 100%);
+    transform: rotate(-180deg);
+}
+
+.partner ul:nth-child(2) {
+    margin: 0px auto 0px;
+    overflow-x: auto;
+    display: flex;
+}
+
+.partner ul:nth-child(3) {
+    margin: 0px auto 160px;
+    overflow-x: auto;
+    display: flex;
+}
+
+.partner li {
+    width: 14%;
+}
+
+.partner .head-img-list {
+    width: 8%;
+}
+
+.recommend-box {
+    margin: 0 auto;
+}
+
+.recommend {
+    border-radius: 16px;
+    // width: 32%;
+}
+
+.callToAction {
+    max-width: 1296px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+    margin: 0 auto;
+}
+
+.callToAction h2 {
+    text-align: center;
+    font-size: 48px;
+}
+
+.callToAction a {
+    padding: 20px 40px;
+    border-radius: 16px;
+    border: 1px solid white;
+}
+
+.callToAction a:hover {
+    background: gray;
+    color: white;
+}
+
+.container-cards {
+    //container-4 -> container-cards
+    overflow: auto;
+    margin-bottom: 24px;
+    max-width: 1296px;
+    margin: 0 auto;
+}
+
+.swiper-pagination {
+    margin-top: 30px;
+}
