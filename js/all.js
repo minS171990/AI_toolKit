@@ -5,6 +5,7 @@ $(document).ready(function () {
   searchData(data)
   filterData(data)
   sortData()
+  multiSort()
 
   console.log($('.pagination li'))
   $('.selection-bar a').click(function () {
@@ -368,9 +369,47 @@ if(location.pathname!="/price.html"){
   });  
 }
 
+let collectedWorkData = []
+function multiSort () {
+  let arr = []
+  $(".sort-button").click(function(){
+    if(this.innerText.slice(-1)=="k") {
+      //如果已被選取，innerText會有check
+      let alreadySelected = this.innerText.substring(0, this.innerText.length-6);
+      console.log(alreadySelected.length)
+      let index = arr.indexOf(alreadySelected)
+      arr.splice(index, 1)
+      for(e of collectedWorkData){
+        if(e[0] == alreadySelected) collectedWorkData.splice(collectedWorkData.indexOf(e),1)
+      }
+      console.log(collectedWorkData)
+    } else {
+      data.type = this.innerText
+      traverseWorksInfo(data)
+    }
+  })
+}
 
-
+function traverseWorksInfo ({ type, sort, page, search }) {
+  console.log(type)
+  const path = 'https://2023-engineer-camp.zeabur.app'
+  let link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`
+  axios.get(link).then(function (res) {
+    worksData = res.data.ai_works.data
+    pagesData = res.data.ai_works.page
+    collectedWorkData.push([type, worksData])
+    console.log(pagesData)
+    if(pagesData.has_next) {
+      page += 1;
+      getWorksInfo(data)
+    }
+    console.log(collectedWorkData)
+  })    
+}  
 /*ToDo*/
+//1. 分頁區逢五要補上上一頁圖標
+//2. 整理出來的陣列資料渲染到頁面上
+
 /* # 分頁區逢五 (完成，待測試)*/ 
 //     # 獲取當前頁碼
 //     # 獲取下一頁的資料
@@ -380,7 +419,7 @@ if(location.pathname!="/price.html"){
 //         # 更新畫面
 //         # 更新當前頁碼
 
-// # 左上方篩選功能
+// # 左上方篩選功能(完成，待測試)
 //     # 初始化結果陣列
 //     # 初始化頁碼
 //         # 獲取指定頁面的資料
