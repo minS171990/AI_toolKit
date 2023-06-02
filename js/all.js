@@ -6,7 +6,7 @@ $(document).ready(function () {
   filterData(data)
   sortData()
   multiSort()
-  // organizeCollectedData()
+  organizeCollectedData()
 
   // console.log($('.pagination li'))
   $('.selection-bar a').click(function () {
@@ -379,7 +379,8 @@ function sortData () {
 //   })
 // }
 
-if(location.pathname!="/AI_toolKit/price.html"){
+var currentPage = location.pathname.replace(/^.*[\\\/]/, '')
+if(currentPage!="price.html"){
   const swiper = new Swiper(".swiper", {
     // 分頁
     pagination: {
