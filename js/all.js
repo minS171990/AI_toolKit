@@ -59,7 +59,7 @@ $(document).ready(function () {
   $('.date-sort-drop').hide()
 
   //過渡分頁特效
-  var btns = ['.submenu a', '.map-list a', '.submenu2 a']
+  var btns = ['.submenu a', '.map-list a', '.submenu-mobile a']
   for (e of btns) {
     gradLoad(e)
   }
@@ -75,14 +75,14 @@ $(document).ready(function () {
 
 function createMenuButton () {
   $('.header').after(
-    '<ul class="submenu2" style="display:none"><li><a class="font-700 font-white" href="index.html">首頁</a></li><li><a class="font-700 font-white" href="price.html">定價</a></li></ul>')
+    '<ul class="submenu-mobile" style="display:none"><li><a class="font-700 font-white" href="index.html">首頁</a></li><li><a class="font-700 font-white" href="price.html">定價</a></li></ul>')
   $('.menu-top').on('click', function () {
     hideBlock()
     $('.menu-top').hide()
     if ($('.menu-top').is(':hidden')) {
       $('.menu-top-close').show()
     }
-    $('.submenu2').slideToggle()
+    $('.submenu-mobile').slideToggle()
   })
   $('.menu-top-close').on('click', function () {
     closeMenu()
@@ -94,10 +94,10 @@ function refresh () {
   //調整刷新頁面
   $(window).resize(function () {
     if ($('.submenu').is(':visible')) {
-      $('.submenu2').hide()
+      $('.submenu-mobile').hide()
       $('.menu-top-close').hide()
     }
-    if ($('.submenu2').is(':visible')) {
+    if ($('.submenu-mobile').is(':visible')) {
       $('.menu-top-close').show()
     }
     if (
@@ -139,14 +139,14 @@ function hideBlock () {
 }
 
 function showBlock () {
-  $('.submenu2').nextUntil('.footer').show()
+  $('.submenu-mobile').nextUntil('.footer').show()
   controlingBlock.forEach(e => {
     $(e).show()
   })
 }
 
 function closeMenu () {
-  $('.submenu2').toggle()
+  $('.submenu-mobile').toggle()
   $('.menu-top').show()
   showBlock()
 }
@@ -165,7 +165,7 @@ function getWorksData ({ type, sort, page, search }) {
     // console.log(res)
     worksData = res.data.ai_works.data
     pagesData = res.data.ai_works.page
-    // console.log(worksData)
+    console.log(worksData)
     // console.log(pagesData)
     paginationProcess(pagesData)
     renderData()
@@ -345,6 +345,9 @@ function renderData () {
     </div>
 </li>`
   })
+  if(worksData.length == 2 || worksData.length == 5) {
+    works += `<div style="width:32%; margin-bottom: 24px"></div>`
+  }
   list.innerHTML = works
 }
 
