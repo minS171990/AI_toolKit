@@ -134,11 +134,6 @@ table {
   border-spacing: 0;
 }
 
-* {
-  box-sizing: border-box;
-  /* outline: 1px solid orange; */
-}
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -216,6 +211,10 @@ img {
   margin: 0 auto;
   text-align: center;
   max-width: 1296px;
+}
+
+.tools-list {
+  margin-bottom: 40px;
 }
 
 .bg-white {
@@ -313,13 +312,13 @@ img {
   margin: 0 auto;
 }
 
-.adv {
+.advantage {
   width: 31.9%;
   border: 1px solid #525252;
   border-radius: 16px;
 }
 
-.adv h2 {
+.advantage h2 {
   width: 80.7%;
 }
 
@@ -411,7 +410,8 @@ img {
 }
 
 .callToAction a {
-  padding: 20px 40px;
+  width: 188px;
+  padding: 20px 32px 20px 40px;
   border-radius: 16px;
   border: 1px solid white;
 }
@@ -563,6 +563,7 @@ img {
 }
 
 .search {
+  font-size: 16px;
   width: calc(100% - 30px);
   height: 64px;
   background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/icons/search.png?raw=true);
@@ -670,7 +671,7 @@ img {
 }
 
 .tools:hover .img {
-  transform: scale(1.22);
+  transform: scale(1.22) translateX(-1%);
   transition: 600ms;
 }
 
@@ -790,6 +791,11 @@ img {
 .swiper-pagination-bullet {
   background-color: gray;
   opacity: 1;
+}
+
+.swiper-pagination.swiper-pagination-bullets {
+  padding-top: 8px;
+  margin-bottom: 120px;
 }
 
 .swiper-pagination-bullet-active {
@@ -912,11 +918,10 @@ img {
 
 .img-container {
   width: 416px;
-  height: 312px;
   overflow: hidden;
 }
 
-.icon-adv {
+.icon-advantage {
   font-size: 80px;
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
 }
@@ -1009,7 +1014,7 @@ img {
   width: 572px;
 }
 
-.updown-1 {
+.py20 {
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -1298,11 +1303,18 @@ img {
   .img {
     transform: translateX(-8%);
   }
+  .tools:hover .img {
+    transform: scale(1.22) translateX(-5%);
+    transition: 600ms;
+  }
 }
 @media (max-width: 1022px) {
   /*圖片調節斷點，假設圖片長寬不同的方式*/
   .img {
     transform: translateX(-12%);
+  }
+  .tools:hover .img {
+    transform: scale(1.22) translateX(-10%);
   }
 }
 @media (max-width: 976px) {
@@ -1318,6 +1330,16 @@ img {
   }
 }
 @media (max-width: 936px) {
+  .tools-list {
+    margin-bottom: 32px;
+  }
+  .search {
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .title-tool {
+    padding-top: 80px;
+  }
   .padding-3 {
     padding: 0;
   }
@@ -1354,7 +1376,7 @@ img {
     margin-bottom: 120px;
   }
   .container-cards {
-    margin-bottom: 24px;
+    margin-bottom: 0px;
   }
   .recommend-box {
     justify-content: flex-start;
@@ -1375,17 +1397,28 @@ img {
   }
 }
 @media (max-width: 936px) {
+  .tools:hover .img {
+    transform: scale(1.22) translateX(0);
+  }
   .bg-white {
     border-radius: 20px;
+    padding-bottom: 80px;
+  }
+  .banner a {
+    margin-bottom: 180px;
   }
   .banner-price-top-slogon {
     font-size: 48px;
+    margin-bottom: 64px;
   }
   .banner-price-bottom-slogon {
     font-size: 28px;
   }
   .banner-price {
     margin-bottom: 258px;
+  }
+  .price-info {
+    gap: 12px;
   }
   .container-price-mid {
     max-width: 700px;
@@ -1422,7 +1455,7 @@ img {
     position: relative;
     margin-left: 92px;
   }
-  .animation-2 {
+  .animation-full {
     margin-bottom: 120px;
   }
   .header {
@@ -1432,16 +1465,16 @@ img {
     display: none;
   }
   .callToAction {
-    margin-top: 80px;
+    margin-top: 160px;
   }
-  .submenu2 {
+  .submenu-mobile {
     height: calc(100vh - 80px - 137px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-bottom: 1px solid white;
   }
-  .submenu2 li {
+  .submenu-mobile li {
     text-align: center;
     font-size: 80px;
     padding: 10px;
@@ -1488,7 +1521,8 @@ img {
     height: 33%;
   }
   .service {
-    margin-top: 20px;
+    margin-top: 120px;
+    margin-bottom: 120px;
     width: 100%;
     flex-direction: column;
   }
@@ -1501,19 +1535,23 @@ img {
     font-size: 32px;
     margin-left: 0px;
   }
-  .adv {
+  .advantage {
+    margin-top: 12px;
     width: 100%;
   }
-  .adv img {
+  .service-block-big-slogon {
+    margin-bottom: 36px;
+  }
+  .advantage img {
     margin-left: 20px;
     margin-bottom: 20px;
   }
-  .adv h2 {
+  .advantage h2 {
     width: calc(100% - 20px);
     margin-left: 20px;
     margin-bottom: 20px;
   }
-  .adv p {
+  .advantage p {
     margin-left: 20px;
   }
   .recommend-box {
@@ -1529,7 +1567,8 @@ img {
     align-items: center;
   }
   .tools {
-    margin-top: 48px;
+    margin-top: 12px;
+    margin-bottom: 0;
     width: 48%;
   }
   .search {
@@ -1540,6 +1579,7 @@ img {
   }
   .middle-bar {
     flex-wrap: wrap;
+    margin-bottom: 36px;
   }
   .pagination {
     width: 100%;
@@ -1558,7 +1598,7 @@ img {
   }
   .callToAction {
     padding: 0;
-    margin-bottom: 100px;
+    margin-bottom: 160px;
   }
   .callToAction h2 {
     font-size: 32px;
@@ -1611,7 +1651,7 @@ img {
   }
 }
 @media (max-width: 767px) {
-  .adv h2 {
+  .advantage h2 {
     margin-left: 20px;
     margin-bottom: 20px;
   }

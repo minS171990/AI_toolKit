@@ -38,6 +38,7 @@
 }
 
 .search {
+    font-size: 16px;
     width: calc(100% - 30px);
     height: 64px;
     background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/icons/search.png?raw=true);
@@ -145,7 +146,7 @@
 }
 
 .tools:hover .img {
-    transform: scale(1.22);
+    transform: scale(1.22) translateX(-1%);
     transition: 600ms;
 }
 
@@ -267,6 +268,11 @@
 .swiper-pagination-bullet {
     background-color: gray;
     opacity: 1;
+}
+
+.swiper-pagination.swiper-pagination-bullets {
+    padding-top: 8px;
+    margin-bottom: 120px;
 }
 
 .swiper-pagination-bullet-active {

@@ -10,6 +10,10 @@
     .img {
         transform: translateX(-8%);
     }
+    .tools:hover .img {
+        transform: scale(1.22) translateX(-5%);
+        transition: 600ms;
+    }
 }
 
 @media (max-width: 1022px) {
@@ -17,6 +21,9 @@
     /*圖片調節斷點，假設圖片長寬不同的方式*/
     .img {
         transform: translateX(-12%);
+    }
+    .tools:hover .img {
+        transform: scale(1.22) translateX(-10%);
     }
 }
 
@@ -36,6 +43,16 @@
 }
 
 @media (max-width: 936px) {
+    .tools-list {
+        margin-bottom: 32px;
+    }
+    .search {
+        margin-top: 32px;
+        margin-bottom: 16px;
+    }
+    .title-tool {
+        padding-top: 80px;
+    }
     .padding-3 {
         padding: 0;
     }
@@ -81,7 +98,7 @@
     }
 
     .container-cards {
-        margin-bottom: 24px;
+        margin-bottom: 0px;
     }
 
     .recommend-box {
@@ -109,13 +126,20 @@
 }
 
 @media (max-width: 936px) {
-
+    .tools:hover .img {
+        transform: scale(1.22) translateX(0);
+    }
     .bg-white {
         border-radius: 20px;
+        padding-bottom: 80px;
     }
 
+    .banner a {
+        margin-bottom: 180px;
+    }
     .banner-price-top-slogon {
         font-size: 48px;
+        margin-bottom: 64px;
     }
 
     .banner-price-bottom-slogon {
@@ -124,6 +148,10 @@
 
     .banner-price {
         margin-bottom: 258px;
+    }
+
+    .price-info {
+        gap: 12px;
     }
 
     .container-price-mid {
@@ -212,7 +240,7 @@
         margin-left: 92px;
     }
 
-    .animation-2 {
+    .animation-full {
         margin-bottom: 120px;
     }
 
@@ -225,10 +253,10 @@
     }
 
     .callToAction {
-        margin-top: 80px;
+        margin-top: 160px;
     }
 
-    .submenu2 {
+    .submenu-mobile {
         height: calc(100vh - 80px - 137px);
         display: flex;
         flex-direction: column;
@@ -236,7 +264,7 @@
         border-bottom: 1px solid white;
     }
 
-    .submenu2 li {
+    .submenu-mobile li {
         text-align: center;
         font-size: 80px;
         padding: 10px;
@@ -294,7 +322,8 @@
     }
 
     .service {
-        margin-top: 20px;
+        margin-top: 120px;
+        margin-bottom: 120px;
         width: 100%;
         flex-direction: column;
     }
@@ -310,23 +339,28 @@
         margin-left: 0px;
     }
 
-    .adv {
+    .advantage {
+        margin-top: 12px;
         width: 100%;
     }
 
-    .adv img {
+    .service-block-big-slogon {
+        margin-bottom: 36px;
+    }
+
+    .advantage img {
         margin-left: 20px;
         margin-bottom: 20px;
     }
 
 
-    .adv h2 {
+    .advantage h2 {
         width: calc(100% - 20px);
         margin-left: 20px;
         margin-bottom: 20px;
     }
 
-    .adv p {
+    .advantage p {
         margin-left: 20px;
     }
 
@@ -347,7 +381,8 @@
     }
 
     .tools {
-        margin-top: 48px;
+        margin-top: 12px;
+        margin-bottom: 0;
         width: 48%;
     }
 
@@ -361,6 +396,7 @@
 
     .middle-bar {
         flex-wrap: wrap;
+        margin-bottom: 36px;
     }
 
     .pagination {
@@ -385,7 +421,7 @@
 
     .callToAction {
         padding: 0;
-        margin-bottom: 100px;
+        margin-bottom: 160px;
     }
 
     .callToAction h2 {
@@ -451,7 +487,7 @@
 }
 
 @media (max-width: 767px) {
-    .adv h2 {
+    .advantage h2 {
         margin-left: 20px;
         margin-bottom: 20px;
     }
