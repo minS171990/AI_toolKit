@@ -346,7 +346,7 @@ function renderData () {
 </li>`
   })
   if(worksData.length == 2 || worksData.length == 5) {
-    works += `<div style="width:32%; margin-bottom: 24px"></div>`
+    works += `<div style="width:32%"></div>`
   }
   list.innerHTML = works
 }
