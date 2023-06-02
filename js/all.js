@@ -1,4 +1,3 @@
-let collectedWorkData = []
 $(document).ready(function () {
   refresh()
   createMenuButton()
@@ -7,7 +6,7 @@ $(document).ready(function () {
   filterData(data)
   sortData()
   multiSort()
-  organizeCollectedData()
+  // organizeCollectedData()
 
   // console.log($('.pagination li'))
   $('.selection-bar a').click(function () {
@@ -408,6 +407,7 @@ if(location.pathname!="/price.html"){
   });  
 }
 
+let collectedWorkData = []
 function multiSort () {
   let arr = []
   $(".sort-button").click(function(){
