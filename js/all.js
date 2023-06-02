@@ -1,3 +1,4 @@
+let collectedWorkData = []
 $(document).ready(function () {
   refresh()
   createMenuButton()
@@ -407,7 +408,6 @@ if(location.pathname!="/price.html"){
   });  
 }
 
-let collectedWorkData = []
 function multiSort () {
   let arr = []
   $(".sort-button").click(function(){
