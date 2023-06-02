@@ -450,9 +450,19 @@ function traverseWorksInfo ({ type, sort, page, search }) {
 }  
 
 function organizeCollectedData(){
+  let result = []
   for(e of collectedWorkData){
     if(e[1].length == 0) {console.log(`${e[0]}的種類尚未有任何資料！`)}
+    else result.push(e[1]);
   }
+  let groupedResult = []
+  for(let i = 0; i < result.flat().length; i += 6){
+    let temp = result.flat().slice(i, i + 6);
+    groupedResult.push(temp);
+  }
+  console.log("groupedResult")
+  console.log(groupedResult)
+  //groupedResult以六個六個為一組，每個分組代表一個頁面所要呈現的資料
 }
 /*ToDo*/
 //1. 前一頁邏輯(完成，待真實data實測)
