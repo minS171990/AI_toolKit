@@ -1,10 +1,13 @@
 $(document).ready(function () {
   refresh()
   createMenuButton()
-  getWorksData(data)
-  searchData(data)
-  filterData(data)
-  sortData()
+
+  getData(data);
+  searchData(data);
+  filterData(data);
+  sortData();
+  paginationProcess()
+
   multiSort()
   organizeCollectedData()
 
@@ -172,7 +175,8 @@ function getWorksData ({ type, sort, page, search }) {
   })
 }
 
-function paginationProcess (pagesData) {
+async function paginationProcess () {
+  const pagesData = await getPageData(data);
   $('.pagination li:not(:last-child):not(:first-child').click(function () {
     if ($('.pagination li:last-child').index() <= pagesData.total_pages) {
       $('.pagination a').removeClass('selected-pagination');
@@ -275,15 +279,16 @@ function paginationProcess (pagesData) {
 //     } else alert('沒有下個分頁!')
 //   })
 // }
-function searchData (data) {
-  const search = document.querySelector('.search')
-  $('.search').keypress(e => {
+function searchData(data) {
+  const search = document.querySelector('.search');
+  search.addEventListener('keypress', async e => {
     if (e.keyCode === 13) {
-      data.search = search.value
-      data.page = 1
-      getData(data)
+      data.search = search.value;
+      data.page = 1;
+      const worksData = await getData(data);
+      renderData(worksData);
     }
-  })
+  });
 }
 
 function filterData (data) {
@@ -302,26 +307,28 @@ function filterData (data) {
     })
   })
 }
-
-function getData ({ type, sort, page, search }) {
-  const path = 'https://2023-engineer-camp.zeabur.app'
-  let link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`
-  axios.get(link).then(function (res) {
-    // console.log(res)
-    worksData = res.data.ai_works.data
-    const list = document.querySelector('#tools')
-    if (worksData.length === 0) {
-      list.innerHTML =
-        '<li style="font-size: 18px; margin-bottom: 60px"><p>找不到相符的資料</p><li>'
-    } else {
-      renderData()
-    }
-    // console.log({ type, sort, page, search })
-    // console.log(worksData)
-  })
+const path = 'https://2023-engineer-camp.zeabur.app'
+async function getData({ type, sort, page, search }) {
+  const link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`;
+  const res = await axios.get(link);
+  const worksData = res.data.ai_works.data;
+  const list = document.querySelector('#tools');
+  renderData(worksData)
+  if (worksData.length === 0) {
+    list.innerHTML =
+      '<li style="font-size: 18px; margin-bottom: 60px"><p>找不到相符的資料</p><li>';
+  }
+  return worksData;
 }
 
-function renderData () {
+async function getPageData({ type, sort, page, search }) {
+  const link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`;
+  const res = await axios.get(link);
+  const pageData = res.data.ai_works.page;
+  return pageData;
+}
+
+function renderData (worksData) {
   let works = ''
   const list = document.querySelector('#tools')
   worksData.forEach(item => {
@@ -346,7 +353,7 @@ function renderData () {
 </li>`
   })
   if(worksData.length == 2 || worksData.length == 5) {
-    works += `<div style="width:32%"></div>`
+    works += `<div style="width:32%; margin-bottom: 24px"></div>`
   }
   list.innerHTML = works
 }
