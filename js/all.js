@@ -379,7 +379,7 @@ function sortData () {
 //   })
 // }
 
-if(location.pathname!="/price.html"){
+if(location.pathname!="/AI_toolKit/price.html"){
   const swiper = new Swiper(".swiper", {
     // 分頁
     pagination: {
