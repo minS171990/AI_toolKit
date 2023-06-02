@@ -6,8 +6,9 @@ $(document).ready(function () {
   filterData(data)
   sortData()
   multiSort()
+  organizeCollectedData()
 
-  console.log($('.pagination li'))
+  // console.log($('.pagination li'))
   $('.selection-bar a').click(function () {
     $('.selection-bar a').removeClass('selected font-700')
     $('.selection-bar a').addClass('unselected')
@@ -39,6 +40,7 @@ $(document).ready(function () {
 
   $('.date-sort-drop').hide()
   $('.all-sort-drop').hide()
+  $('.arrow-left').hide()
 
   $('#button-date').click(function () {
     $('.date-sort-drop').slideToggle()
@@ -163,80 +165,116 @@ function getWorksData ({ type, sort, page, search }) {
     // console.log(res)
     worksData = res.data.ai_works.data
     pagesData = res.data.ai_works.page
-    console.log(worksData)
-    console.log(pagesData)
+    // console.log(worksData)
+    // console.log(pagesData)
     paginationProcess(pagesData)
     renderData()
   })
 }
 
 function paginationProcess (pagesData) {
-  $('.pagination li:not(:last-child)').click(function () {
+  $('.pagination li:not(:last-child):not(:first-child').click(function () {
     if ($('.pagination li:last-child').index() <= pagesData.total_pages) {
       $('.pagination a').removeClass('selected-pagination');
       $('.pagination a').addClass('unselected-pagination');
       $(this).find('a').toggleClass('selected-pagination');
-      index = $(this).index();
+      index = $(this).index() - 1;
     } else alert('目前頁數未滿足切換條件!')
   })
 
   index = Number(pagesData.current_page) - 1
 
-  console.log(index)
+  // console.log(index)
   $('.pagination li:last-child').click(function () {
     if (pagesData.has_next) {
       if (!((index + 1) % 5 == 0)) { //[0]->1, [4]->5, [9]->10
-        $(`.pagination li:nth-child(${(index + 1) % 5})`).find('a').removeClass(
+        $(`.pagination li:nth-child(${(index + 2) % 5})`).find('a').removeClass(
           'selected-pagination'
         )
-        $(`.pagination li:nth-child(${(index + 2) % 5})`).find('a').addClass(
+        $(`.pagination li:nth-child(${(index + 3) % 5})`).find('a').addClass(
           'selected-pagination'
         )
-        if((index + 1) % 5 == 4) {
-          $(`.pagination li:nth-child(${(index + 1) % 5})`).find('a').removeClass(
+        if((index + 2) % 5 == 4) {
+          $(`.pagination li:nth-child(${(index + 2) % 5})`).find('a').removeClass(
             'selected-pagination'
           )
           $(`.pagination li:nth-child(${5})`).find('a').addClass(
             'selected-pagination'
           )
         }
+        if((index + 1) % 5 == 4) {
+          $(`.pagination li:nth-child(${5}`).find('a').removeClass(
+            'selected-pagination'
+          )
+          $(`.pagination li:nth-child(${6})`).find('a').addClass(
+            'selected-pagination'
+          )
+        }
         index += 1
         console.log(index)
       } else {
-        $(`.pagination li:nth-child(${5})`).find('a').removeClass(
+        $(`.pagination li:nth-child(${6})`).find('a').removeClass(
           'selected-pagination'
         )
-        $(`.pagination li:nth-child(${(index + 2) % 5})`).find('a').addClass(
+        $(`.pagination li:nth-child(${(index + 3) % 5})`).find('a').addClass(
           'selected-pagination'
         )
-        for(let i = 1; i<=5; i++){
-          $(`.pagination li:nth-child(${i})`).find('a').text(`${index+(i+1)}`);
+        for(let i = 1; i<=6; i++){
+          $(`.pagination li:nth-child(${i})`).find('a').text(`${index+(i)}`);
         }
         data.page = index + 2;
-        console.log(data)
+        // console.log(data)
         renderData();
         index += 1;
+        if(index > 0) $(".arrow-left").show();
+        // console.log(index)
       }
     } else alert('沒有下個分頁!')
+  })
+  $(`.pagination li:first-child`).click(function(){
+    // console.log(index)
+    if((index) % 5 == 0) {
+      $(`.pagination li:nth-child(${6})`).find('a').text(`${index}`);
+      $(`.pagination li:nth-child(${5})`).find('a').text(`${index-1}`);
+      $(`.pagination li:nth-child(${4})`).find('a').text(`${index-2}`);
+      $(`.pagination li:nth-child(${3})`).find('a').text(`${index-3}`);
+      $(`.pagination li:nth-child(${2})`).find('a').text(`${index-4}`);
+      $(`.pagination li:nth-child(${2})`).find('a').removeClass(
+        'selected-pagination'
+      )
+      $(`.pagination li:nth-child(${6})`).find('a').addClass(
+        'selected-pagination'
+      )
+    } else {
+      $(`.pagination li:nth-child(${(index % 5)+2})`).find('a').removeClass(
+        'selected-pagination'
+      )
+      $(`.pagination li:nth-child(${(index % 5)+1})`).find('a').addClass(
+        'selected-pagination'
+      )
+    }
+    index -= 1;
+    console.log(index)
+    if(index <= 4) $(".arrow-left").hide()
   })
 }
 
-function oldNextPage() { //Since line-185
-  $('.pagination li:last-child').click(function () {
-    if (pagesData.has_next) {
-      if (index < 4) {
-        $(`.pagination li:nth-child(${index + 1})`).find('a').removeClass(
-          'selected-pagination'
-        )
-        $(`.pagination li:nth-child(${index + 2})`).find('a').addClass(
-          'selected-pagination'
-        )
-        index += 1
-        console.log(index)
-      }
-    } else alert('沒有下個分頁!')
-  })
-}
+// function oldNextPage() { //Since line-187
+//   $('.pagination li:last-child').click(function () {
+//     if (pagesData.has_next) {
+//       if (index < 4) {
+//         $(`.pagination li:nth-child(${index + 1})`).find('a').removeClass(
+//           'selected-pagination'
+//         )
+//         $(`.pagination li:nth-child(${index + 2})`).find('a').addClass(
+//           'selected-pagination'
+//         )
+//         index += 1
+//         // console.log(index)
+//       }
+//     } else alert('沒有下個分頁!')
+//   })
+// }
 function searchData (data) {
   const search = document.querySelector('.search')
   $('.search').keypress(e => {
@@ -250,16 +288,16 @@ function searchData (data) {
 
 function filterData (data) {
   const filters = document.querySelectorAll('.selection-bar a')
-  console.log(filters)
+  // console.log(filters)
   filters.forEach(e => {
-    console.log(e)
+    // console.log(e)
     $(e).on('click', function () {
       if (e.innerText === '全部') {
         data.type = ''
       } else {
         data.type = e.innerText
       }
-      console.log(data)
+      // console.log(data)
       getData(data)
     })
   })
@@ -269,7 +307,7 @@ function getData ({ type, sort, page, search }) {
   const path = 'https://2023-engineer-camp.zeabur.app'
   let link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`
   axios.get(link).then(function (res) {
-    console.log(res)
+    // console.log(res)
     worksData = res.data.ai_works.data
     const list = document.querySelector('#tools')
     if (worksData.length === 0) {
@@ -278,8 +316,8 @@ function getData ({ type, sort, page, search }) {
     } else {
       renderData()
     }
-    console.log({ type, sort, page, search })
-    console.log(worksData)
+    // console.log({ type, sort, page, search })
+    // console.log(worksData)
   })
 }
 
@@ -315,7 +353,7 @@ function sortData () {
   $("#to-old-btn").on("click", e => {
     e.preventDefault()
     data.sort = 0
-    console.log(data)
+    // console.log(data)
     getData(data)
     dateSort.innerHTML = 
     '由新到舊<span class="material-icons">keyboard_arrow_down</span>'
@@ -376,12 +414,13 @@ function multiSort () {
     if(this.innerText.slice(-1)=="k") {
       //如果已被選取，innerText會有check
       let alreadySelected = this.innerText.substring(0, this.innerText.length-6);
-      console.log(alreadySelected.length)
+      // console.log(alreadySelected.length)
       let index = arr.indexOf(alreadySelected)
       arr.splice(index, 1)
       for(e of collectedWorkData){
         if(e[0] == alreadySelected) collectedWorkData.splice(collectedWorkData.indexOf(e),1)
       }
+      console.log(`已移除種類篩選，目前已收集陣列資料：`)
       console.log(collectedWorkData)
     } else {
       data.type = this.innerText
@@ -391,26 +430,34 @@ function multiSort () {
 }
 
 function traverseWorksInfo ({ type, sort, page, search }) {
-  console.log(type)
+  // console.log(type)
   const path = 'https://2023-engineer-camp.zeabur.app'
   let link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`
   axios.get(link).then(function (res) {
     worksData = res.data.ai_works.data
     pagesData = res.data.ai_works.page
     collectedWorkData.push([type, worksData])
-    console.log(pagesData)
+    // console.log(pagesData)
     if(pagesData.has_next) {
       page += 1;
       getWorksInfo(data)
     }
+    console.log("已增加種類篩選，已收集陣列資料：")
     console.log(collectedWorkData)
+    organizeCollectedData();
   })    
 }  
-/*ToDo*/
-//1. 分頁區逢五要補上上一頁圖標
-//2. 整理出來的陣列資料渲染到頁面上
 
-/* # 分頁區逢五 (完成，待測試)*/ 
+function organizeCollectedData(){
+  for(e of collectedWorkData){
+    if(e[1].length == 0) {console.log(`${e[0]}的種類尚未有任何資料！`)}
+  }
+}
+/*ToDo*/
+//1. 前一頁邏輯(完成，待真實data實測)
+//2. 整理出來的陣列資料渲染到頁面上(接收到的Data以六個為一組隔開)
+
+/* # 分頁區逢五 (完成，待真實data實測)*/ 
 //     # 獲取當前頁碼
 //     # 獲取下一頁的資料
 //     # 如果有下一頁
