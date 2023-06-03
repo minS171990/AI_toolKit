@@ -13,9 +13,13 @@ $(document).ready(function () {
 
   // console.log($('.pagination li'))
   $('.selection-bar a').click(function () {
+    collectedWorkData = []
+    $('.sort-button').find('span').removeClass('d-flex')
     $('.selection-bar a').removeClass('selected font-700')
     $('.selection-bar a').addClass('unselected')
+    $('.all-sort-drop').slideUp()
     $(this).addClass('selected font-700')
+    $("#button-date").css("visibility","visible");
   })
 
   //切換分頁(預寫)
@@ -51,6 +55,7 @@ $(document).ready(function () {
   })
 
   $('#button-all-sort').click(function () {
+    $("#button-date").css("visibility","hidden");
     $('.all-sort-drop').slideToggle()
     $("#button-all-sort").toggleClass('active')
   })
@@ -510,7 +515,7 @@ function showNoData () {
       '<li style="font-size: 18px; margin-bottom: 60px"><p>找不到相符的資料</p><li>';
 }
 /*ToDo*/
-//1. 在按鍵功能的地方，判斷點擊是單篩區還是多篩區。如果是來自單篩區，切換分頁則依循串接資料去渲染即可。如果是自己整理出來的陣列，則撰寫另外一種邏輯。新舊排序也是。
+//1. 在按鍵功能的地方，判斷點擊是單篩區還是多篩區。如果是來自單篩區，切換分頁則依循串接資料去渲染即可。如果是自己整理出來的陣列，則撰寫另外一種邏輯。新舊排序則改為若選取多篩區，則不顯示新舊排序的按鈕(否則陣列跟頁數的邏輯會更複雜)。
 
 /*ToCheck*/
 //1. 前一頁邏輯(完成，待真實data實測)
