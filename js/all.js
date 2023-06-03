@@ -496,12 +496,12 @@ function organizeCollectedData(){
     groupedResult.push(temp);
   }
   //groupedResult以六個六個為一組，每個分組代表一個頁面所要呈現的資料
-  console.log("groupedResult")
-  console.log(groupedResult)
-  groupedResult.forEach(e => {
-    worksData = e;
-    renderData(worksData)
-  })
+  // console.log("groupedResult")
+  // console.log(groupedResult)
+  let pageTotalFilter = 1;
+  worksData = groupedResult[pageTotalFilter - 1]
+  console.log(worksData)
+  if(worksData!=undefined)  renderData(worksData)
 }
 
 function showNoData () {
@@ -510,6 +510,9 @@ function showNoData () {
       '<li style="font-size: 18px; margin-bottom: 60px"><p>找不到相符的資料</p><li>';
 }
 /*ToDo*/
+//1. 在按鍵功能的地方，判斷點擊是單篩區還是多篩區。如果是來自單篩區，切換分頁則依循串接資料去渲染即可。如果是自己整理出來的陣列，則撰寫另外一種邏輯。新舊排序也是。
+
+/*ToCheck*/
 //1. 前一頁邏輯(完成，待真實data實測)
 //2. 整理出來的陣列資料渲染到頁面上(接收到的Data以六個為一組隔開) (完成可以多種類篩選的部分，順序會依據所篩來顯示)
 
