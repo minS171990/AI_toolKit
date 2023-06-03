@@ -418,9 +418,13 @@ if(currentPage!="price.html"){
 
 let collectedWorkData = []
 function multiSort () {
+  console.log($('.selection-bar a')[0])
   let arr = []
   let clickedNum = 0;//已選取多少項目
   $(".sort-button").click(function(){
+    $('.selection-bar a').removeClass('selected font-700')
+    $('.selection-bar a').addClass('unselected')
+    $('.selection-bar a:first').addClass('selected font-700')
     if(this.innerText.slice(-1)=="k") {
       //如果已被選取，innerText會有check
       let alreadySelected = this.innerText.substring(0, this.innerText.length-6);
