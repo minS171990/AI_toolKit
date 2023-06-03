@@ -366,7 +366,7 @@ function sortData () {
     // console.log(data)
     getData(data)
     dateSort.innerHTML = 
-    '由新到舊<span class="material-icons">keyboard_arrow_down</span>'
+    '由新到舊<span class="material-icons date-sort-drop-icon">keyboard_arrow_down</span>'
     $('.date-sort-drop').slideToggle();
     $("#button-date").toggleClass('active')
   })
@@ -375,7 +375,7 @@ function sortData () {
     data.sort = 1
     getData(data)
     dateSort.innerHTML =
-    '由舊到新<span class="material-icons">keyboard_arrow_down</span>'
+    '由舊到新<span class="material-icons date-sort-drop-icon">keyboard_arrow_down</span>'
     $('.date-sort-drop').slideToggle();
     $("#button-date").toggleClass('active')
   })

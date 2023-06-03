@@ -874,6 +874,11 @@ img {
   font-weight: bold;
 }
 
+.date-sort-drop-icon {
+  font-size: 16px;
+  margin-left: 16px;
+}
+
 .tools-list {
   width: 100%;
   position: relative;
