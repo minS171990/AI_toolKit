@@ -312,11 +312,9 @@ async function getData({ type, sort, page, search }) {
   const link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`;
   const res = await axios.get(link);
   const worksData = res.data.ai_works.data;
-  const list = document.querySelector('#tools');
   renderData(worksData)
   if (worksData.length === 0) {
-    list.innerHTML =
-      '<li style="font-size: 18px; margin-bottom: 60px"><p>找不到相符的資料</p><li>';
+    showNoData()
   }
   return worksData;
 }
@@ -421,6 +419,7 @@ if(currentPage!="price.html"){
 let collectedWorkData = []
 function multiSort () {
   let arr = []
+  let clickedNum = 0;//已選取多少項目
   $(".sort-button").click(function(){
     if(this.innerText.slice(-1)=="k") {
       //如果已被選取，innerText會有check
@@ -431,10 +430,32 @@ function multiSort () {
       for(e of collectedWorkData){
         if(e[0] == alreadySelected) collectedWorkData.splice(collectedWorkData.indexOf(e),1)
       }
-      console.log(`已移除種類篩選，目前已收集陣列資料：`)
-      console.log(collectedWorkData)
+      // console.log(`已移除種類篩選，目前已收集陣列資料：`)
+      // console.log(collectedWorkData)
+      if(clickedNum == 1) {//如果移除所有篩選(移除前所有只剩一個)，回到初始畫面
+        data.type = '' 
+        data.sort = 0
+        data.page = 1
+        data.search = ''
+        // console.log(data)
+        getData(data)
+      }
+      clickedNum --;
+      organizeCollectedData()
+      currentNum = 0; //總共選取的作品數量初始化
+      collectedWorkData.forEach(e => { //累加所有選取項目的作品數量
+        currentNum += e[1].length
+      })
+      if(currentNum == 0){ //如果都沒有，顯示找不到資料的畫面
+        showNoData()
+      }
     } else {
       data.type = this.innerText
+      clickedNum ++;
+      // console.log(clickedNum)
+      if(collectedWorkData.length===0) {
+        showNoData()
+      }
       traverseWorksInfo(data)
     }
   })
@@ -453,8 +474,8 @@ function traverseWorksInfo ({ type, sort, page, search }) {
       page += 1;
       getWorksInfo(data)
     }
-    console.log("已增加種類篩選，已收集陣列資料：")
-    console.log(collectedWorkData)
+    // console.log("已增加種類篩選，已收集陣列資料：")
+    // console.log(collectedWorkData)
     organizeCollectedData();
   })    
 }  
@@ -462,7 +483,7 @@ function traverseWorksInfo ({ type, sort, page, search }) {
 function organizeCollectedData(){
   let result = []
   for(e of collectedWorkData){
-    if(e[1].length == 0) {console.log(`${e[0]}的種類尚未有任何資料！`)}
+    if(e[1].length == 0) {/*console.log(`${e[0]}的種類尚未有任何資料！`)*/}
     else result.push(e[1]);
   }
   let groupedResult = []
@@ -470,13 +491,23 @@ function organizeCollectedData(){
     let temp = result.flat().slice(i, i + 6);
     groupedResult.push(temp);
   }
+  //groupedResult以六個六個為一組，每個分組代表一個頁面所要呈現的資料
   console.log("groupedResult")
   console.log(groupedResult)
-  //groupedResult以六個六個為一組，每個分組代表一個頁面所要呈現的資料
+  groupedResult.forEach(e => {
+    worksData = e;
+    renderData(worksData)
+  })
+}
+
+function showNoData () {
+  const list = document.querySelector('#tools');
+  list.innerHTML =
+      '<li style="font-size: 18px; margin-bottom: 60px"><p>找不到相符的資料</p><li>';
 }
 /*ToDo*/
 //1. 前一頁邏輯(完成，待真實data實測)
-//2. 整理出來的陣列資料渲染到頁面上(接收到的Data以六個為一組隔開)
+//2. 整理出來的陣列資料渲染到頁面上(接收到的Data以六個為一組隔開) (完成可以多種類篩選的部分，順序會依據所篩來顯示)
 
 /* # 分頁區逢五 (完成，待真實data實測)*/ 
 //     # 獲取當前頁碼
