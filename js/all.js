@@ -19,7 +19,7 @@ $(document).ready(function () {
     $('.selection-bar a').addClass('unselected')
     $('.all-sort-drop').slideUp()
     $(this).addClass('selected font-700')
-    $("#button-date").css("visibility","visible");
+    // $("#button-date").css("visibility","visible");
   })
 
   //切換分頁(預寫)
@@ -55,7 +55,6 @@ $(document).ready(function () {
   })
 
   $('#button-all-sort').click(function () {
-    $("#button-date").css("visibility","hidden");
     $('.all-sort-drop').slideToggle()
     $("#button-all-sort").toggleClass('active')
   })
@@ -182,16 +181,30 @@ function getWorksData ({ type, sort, page, search }) {
 
 async function paginationProcess () {
   const pagesData = await getPageData(data);
+  
+  for(let i=2; i<=6; i++) {
+    // console.log($(`.pagination li:nth-child(${i})`).text())
+    if(Number($(`.pagination li:nth-child(${i})`).text()) > pagesData.total_pages){
+      $(`.pagination li:nth-child(${i})`).hide()
+    } else {$(`.pagination li:nth-child(${i})`).show()}
+  }
   $('.pagination li:not(:last-child):not(:first-child').click(function () {
-    if ($('.pagination li:last-child').index() <= pagesData.total_pages) {
+    // if ($('.pagination li:last-child').index() <= pagesData.total_pages) {
       $('.pagination a').removeClass('selected-pagination');
       $('.pagination a').addClass('unselected-pagination');
       $(this).find('a').toggleClass('selected-pagination');
       index = $(this).index() - 1;
-    } else alert('目前頁數未滿足切換條件!')
+    // } else alert('目前頁數未滿足切換條件!')
   })
 
   index = Number(pagesData.current_page) - 1
+
+  if(index <= 4) {
+    $(".arrow-left").hide();
+  }
+  if(Number(pagesData.total_pages <= 4)){
+    $('.pagination li:last-child').hide()
+  }
 
   // console.log(index)
   $('.pagination li:last-child').click(function () {
@@ -233,9 +246,15 @@ async function paginationProcess () {
         }
         data.page = index + 2;
         // console.log(data)
-        renderData();
+        renderData(data);
         index += 1;
         if(index > 0) $(".arrow-left").show();
+        for(let i=2; i<=6; i++) {
+          console.log($(`.pagination li:nth-child(${i})`).text())
+          if(Number($(`.pagination li:nth-child(${i})`).text()) > pagesData.total_pages){
+            $(`.pagination li:nth-child(${i})`).hide()
+          } else {$(`.pagination li:nth-child(${i})`).show()}
+        }
         // console.log(index)
       }
     } else alert('沒有下個分頁!')
@@ -264,7 +283,12 @@ async function paginationProcess () {
     }
     index -= 1;
     console.log(index)
-    if(index <= 4) $(".arrow-left").hide()
+    for(let i=2; i<=6; i++) {
+      console.log($(`.pagination li:nth-child(${i})`).text())
+      if(Number($(`.pagination li:nth-child(${i})`).text()) <= pagesData.total_pages){
+        $(`.pagination li:nth-child(${i})`).show()
+      } 
+    }
   })
 }
 
@@ -292,6 +316,9 @@ function searchData(data) {
       data.page = 1;
       const worksData = await getData(data);
       renderData(worksData);
+      if(worksData.length===0){
+        showNoData()
+      }
     }
   });
 }
@@ -423,7 +450,6 @@ if(currentPage!="price.html"){
 
 let collectedWorkData = []
 function multiSort () {
-  console.log($('.selection-bar a')[0])
   let arr = []
   let clickedNum = 0;//已選取多少項目
   $(".sort-button").click(function(){

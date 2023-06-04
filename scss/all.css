@@ -794,6 +794,7 @@ img {
 }
 
 .swiper-pagination.swiper-pagination-bullets {
+  display: none;
   padding-top: 8px;
   margin-bottom: 120px;
 }
@@ -1335,6 +1336,9 @@ img {
   }
 }
 @media (max-width: 936px) {
+  .swiper-pagination.swiper-pagination-bullets {
+    display: flex;
+  }
   .price-info {
     margin-bottom: 0;
   }
