@@ -585,14 +585,14 @@ async function DataProcess ({ type, sort, page, search }) {
   while (pagesData.has_next) {
     page++
     link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`
-    console.log(link)
+    // console.log(link)
     res = await axios.get(link)
     let worksData = res.data.ai_works.data
     pagesData = res.data.ai_works.page
     arr.push(worksData)
   }
 
-  console.log(arr)
+  // console.log(arr)
   // let psuedo = {
   //   create_time: 1684220568543,
   //   description: 'Pseudo1',
@@ -664,7 +664,7 @@ async function DataProcess ({ type, sort, page, search }) {
   sortData(arr)
 
   //篩選功能
-  console.log(arr)
+  // console.log(arr)
   qa = arr.filter(e => e.type == '問答服務')
   qaGrouped = createGroup(qa)
 
@@ -710,7 +710,7 @@ async function DataProcess ({ type, sort, page, search }) {
         arr.forEach(items => {
           if (items.type === e.innerText) result.push(items)
         })
-        console.log(result)
+        // console.log(result)
 
         // let groupedFilterResult = createGroup(result)
         $(`.pagination a`).removeClass('selected-pagination')
@@ -857,7 +857,7 @@ function switchPagination (item, arr) {
         }
       }
     }
-    console.log(totalPage)
+    // console.log(totalPage)
   }
 }
 function createGroup (arr) {
@@ -917,11 +917,14 @@ function paginationProcess (totalPage, group) {
   const dateSort = document.querySelector('#button-date')
   console.log(dateSort.innerText)
   if (dateSort.innerText === '由舊到新\nkeyboard_arrow_down') {
-    group.sort((a, b) => new Date(a.create_time) - new Date(b.create_time))
+    group = group.flat().sort((a, b) => new Date(a.create_time) - new Date(b.create_time))
   } else {
-    group.sort((a, b) => new Date(b.create_time) - new Date(a.create_time))
+    group = group.flat().sort((a, b) => new Date(b.create_time) - new Date(a.create_time))
   }
   console.log(group)
+  group = createGroup(group)
+  console.log(group)
+  if(group.length>0) renderData(group[0])
   const filters = document.querySelectorAll('.selection-bar a')
   for (let i = 2; i <= 6; i++) {
     if (Number($(`.pagination li:nth-child(${i})`).text()) > totalPage) {
@@ -940,7 +943,7 @@ function paginationProcess (totalPage, group) {
   })
 
   let currentPage = 1
-  console.log(currentPage)
+  // console.log(currentPage)
   if (totalPage != 0) {
     $('.pagination li:last-child').click(function () {
       if (currentPage < totalPage) {
