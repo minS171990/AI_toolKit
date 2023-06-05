@@ -884,7 +884,7 @@ function sortData (arr) {
     let groupedFilterResult = createGroup(arr)
     // console.log(groupedFilterResult)
     renderData(groupedFilterResult[0])
-    // filterPagination(groupedFilterResult)
+    paginationProcess(groupedFilterResult.length, groupedFilterResult)
   })
   $('#to-new-btn').on('click', e => {
     arr.sort((a, b) => new Date(a.create_time) - new Date(b.create_time))
