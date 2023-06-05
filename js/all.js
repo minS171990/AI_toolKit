@@ -898,7 +898,7 @@ function sortData (arr) {
     // console.log(groupedFilterResult)
 
     renderData(groupedFilterResult[0])
-    // filterPagination(groupedFilterResult)
+    paginationProcess(groupedFilterResult.length, groupedFilterResult)
   })
 }
 
