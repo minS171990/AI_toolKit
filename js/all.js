@@ -915,7 +915,8 @@ function paginationReset (totalPage) {
 function paginationProcess (totalPage, group) {
   paginationReset()
   const dateSort = document.querySelector('#button-date')
-  if (dateSort.innerText === '由舊到新') {
+  console.log(dateSort.innerText)
+  if (dateSort.innerText === '由舊到新\nkeyboard_arrow_down') {
     group.sort((a, b) => new Date(b.create_time) - new Date(a.create_time))
   } else {
     group.sort((a, b) => new Date(a.create_time) - new Date(b.create_time))
