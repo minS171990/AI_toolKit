@@ -693,6 +693,7 @@ async function DataProcess ({ type, sort, page, search }) {
   )
   const filters = document.querySelectorAll('.selection-bar a')
   totalPage = groupedResult.length
+  switchPagination(filters[0], groupedResult)
   toolsTag()
   $('.selection-bar a').click(function () {
     switchPagination(filters[0], groupedResult)
