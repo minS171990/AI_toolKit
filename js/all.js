@@ -15,7 +15,6 @@ $(document).ready(function () {
   // multiSort()
   // organizeCollectedData()
 
-  // console.log($('.pagination li'))
   $('.selection-bar a').click(function () {
     collectedWorkData = []
     $('.sort-button').find('span').removeClass('d-flex')
@@ -157,11 +156,11 @@ const data = {
 const path = 'https://2023-engineer-camp.zeabur.app'
 //   let link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`
 //   axios.get(link).then(function (res) {
-//     // console.log(res)
+//
 //     worksData = res.data.ai_works.data
 //     pagesData = res.data.ai_works.page
-//     console.log(worksData)
-//     // console.log(pagesData)
+//
+//
 //     paginationProcess(pagesData)
 //     renderData()
 //   })
@@ -171,7 +170,7 @@ const path = 'https://2023-engineer-camp.zeabur.app'
 //   const pagesData = await getPageData(data)
 
 //   for (let i = 2; i <= 6; i++) {
-//     // console.log($(`.pagination li:nth-child(${i})`).text())
+//
 //     if (
 //       Number($(`.pagination li:nth-child(${i})`).text()) > pagesData.total_pages
 //     ) {
@@ -198,7 +197,7 @@ const path = 'https://2023-engineer-camp.zeabur.app'
 //   //   $('.pagination li:last-child').hide()
 //   // }
 
-//   // console.log(index)
+//
 //   $('.pagination li:last-child').click(function () {
 //     if (pagesData.has_next) {
 //       if (!((index + 1) % 5 == 0)) {
@@ -226,7 +225,7 @@ const path = 'https://2023-engineer-camp.zeabur.app'
 //             .addClass('selected-pagination')
 //         }
 //         index += 1
-//         console.log(index)
+//
 //       } else {
 //         $(`.pagination li:nth-child(${6})`)
 //           .find('a')
@@ -240,12 +239,12 @@ const path = 'https://2023-engineer-camp.zeabur.app'
 //             .text(`${index + i}`)
 //         }
 //         data.page = index + 2
-//         // console.log(data)
+//
 //         renderData(data)
 //         index += 1
 //         if (index > 0) $('.arrow-left').show()
 //         for (let i = 2; i <= 6; i++) {
-//           console.log($(`.pagination li:nth-child(${i})`).text())
+//
 //           if (
 //             Number($(`.pagination li:nth-child(${i})`).text()) >
 //             pagesData.total_pages
@@ -255,12 +254,12 @@ const path = 'https://2023-engineer-camp.zeabur.app'
 //             $(`.pagination li:nth-child(${i})`).show()
 //           }
 //         }
-//         // console.log(index)
+//
 //       }
 //     } else alert('沒有下個分頁!')
 //   })
 //   $(`.pagination li:first-child`).click(function () {
-//     // console.log(index)
+//
 //     if (index % 5 == 0) {
 //       $(`.pagination li:nth-child(${6})`).find('a').text(`${index}`)
 //       $(`.pagination li:nth-child(${5})`)
@@ -290,9 +289,9 @@ const path = 'https://2023-engineer-camp.zeabur.app'
 //         .addClass('selected-pagination')
 //     }
 //     index -= 1
-//     console.log(index)
+//
 //     for (let i = 2; i <= 6; i++) {
-//       console.log($(`.pagination li:nth-child(${i})`).text())
+//
 //       if (
 //         Number($(`.pagination li:nth-child(${i})`).text()) <=
 //         pagesData.total_pages
@@ -315,7 +314,6 @@ function oldNextPage () {
           .find('a')
           .addClass('selected-pagination')
         index += 1
-        // console.log(index)
       }
     } else alert('沒有下個分頁!')
   })
@@ -350,16 +348,16 @@ function searchData (data) {
 
 // function filterData (data) {
 //   const filters = document.querySelectorAll('.selection-bar a')
-//   // console.log(filters)
+//
 //   filters.forEach(e => {
-//     // console.log(e)
+//
 //     $(e).on('click', function () {
 //       if (e.innerText === '全部') {
 //         data.type = ''
 //       } else {
 //         data.type = e.innerText
 //       }
-//       // console.log(data)
+//
 //       getData(data)
 //     })
 //   })
@@ -411,6 +409,7 @@ function renderData (worksData) {
     works += `<div style="width:32%; margin-bottom: 24px"></div>`
   }
   list.innerHTML = works
+  toolsTag()
 }
 
 function sortData () {
@@ -418,7 +417,7 @@ function sortData () {
   $('#to-old-btn').on('click', e => {
     e.preventDefault()
     data.sort = 0
-    // console.log(data)
+
     getData(data)
     dateSort.innerHTML =
       '由新到舊<span class="material-icons date-sort-drop-icon">keyboard_arrow_down</span>'
@@ -487,7 +486,7 @@ let collectedWorkData = []
 //         0,
 //         this.innerText.length - 6
 //       )
-//       // console.log(alreadySelected.length)
+//
 //       let index = arr.indexOf(alreadySelected)
 //       arr.splice(index, 1)
 //       for (e of collectedWorkData) {
@@ -502,7 +501,7 @@ let collectedWorkData = []
 //         data.sort = 0
 //         data.page = 1
 //         data.search = ''
-//         // console.log(data)
+//
 //         getData(data)
 //       }
 //       clickedNum--
@@ -519,7 +518,7 @@ let collectedWorkData = []
 //     } else {
 //       data.type = this.innerText
 //       clickedNum++
-//       // console.log(clickedNum)
+//
 //       if (collectedWorkData.length === 0) {
 //         showNoData()
 //       }
@@ -529,14 +528,14 @@ let collectedWorkData = []
 // }
 
 // function traverseWorksInfo ({ type, sort, page, search }) {
-//   // console.log(type)
+//
 //   const path = 'https://2023-engineer-camp.zeabur.app'
 //   let link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`
 //   axios.get(link).then(function (res) {
 //     worksData = res.data.ai_works.data
 //     pagesData = res.data.ai_works.page
 //     collectedWorkData.push([type, worksData])
-//     // console.log(pagesData)
+//
 //     if (pagesData.has_next) {
 //       page += 1
 //       getWorksInfo(data)
@@ -564,7 +563,7 @@ let collectedWorkData = []
 //   // console.log(groupedResult)
 //   let pageTotalFilter = 1
 //   worksData = groupedResult[pageTotalFilter - 1]
-//   console.log(worksData)
+//
 //   if (worksData != undefined) renderData(worksData)
 // }
 
@@ -585,14 +584,13 @@ async function DataProcess ({ type, sort, page, search }) {
   while (pagesData.has_next) {
     page++
     link = `${path}/api/v1/works/?type=${type}&sort=${sort}&page=${page}&search=${search}`
-    // console.log(link)
+
     res = await axios.get(link)
     let worksData = res.data.ai_works.data
     pagesData = res.data.ai_works.page
     arr.push(worksData)
   }
 
-  // console.log(arr)
   // let psuedo = {
   //   create_time: 1684220568543,
   //   description: 'Pseudo1',
@@ -648,7 +646,7 @@ async function DataProcess ({ type, sort, page, search }) {
     let temp = arr.slice(i, i + 6)
     groupedResult.push(temp)
   }
-  // console.log(groupedResult)
+
   if (arr.length === 0) showNoData()
   // renderData(arr)
   currentPage = 1
@@ -657,14 +655,13 @@ async function DataProcess ({ type, sort, page, search }) {
   renderData(groupedResult[index])
 
   const filtersNew = document.querySelectorAll('.selection-bar a')
-  // console.log(filtersNew)
+
   // filterPagination(groupedResult)
 
   //排序功能
   sortData(arr)
 
   //篩選功能
-  // console.log(arr)
   qa = arr.filter(e => e.type == '問答服務')
   qaGrouped = createGroup(qa)
 
@@ -683,22 +680,28 @@ async function DataProcess ({ type, sort, page, search }) {
   saling = arr.filter(e => e.type == '行銷文案')
   salingGrouped = createGroup(saling)
 
+  const types = [
+    '問答服務',
+    '虛擬客服',
+    '生活應用',
+    '程式知識',
+    '翻譯助手',
+    '行銷文案'
+  ]
+  const groupedResults = types.map(type =>
+    createGroup(arr.filter(e => e.type == type))
+  )
   const filters = document.querySelectorAll('.selection-bar a')
   totalPage = groupedResult.length
-  switchPagination(filters[0], groupedResult)
+  toolsTag()
   $('.selection-bar a').click(function () {
     switchPagination(filters[0], groupedResult)
-    switchPagination(filters[1], qaGrouped)
-    switchPagination(filters[2], virtualGrouped)
-    switchPagination(filters[3], lifeUseGrouped)
-    switchPagination(filters[4], programmingGrouped)
-    switchPagination(filters[5], translationGrouped)
-    switchPagination(filters[6], salingGrouped)
+    groupedResults.forEach((group, index) => {
+      switchPagination(filters[index + 1], group)
+    })
   })
 
-  // console.log(filters)
   filtersNew.forEach(e => {
-    // console.log(e)
     $(e).on('click', function () {
       result = []
       if (e.innerText === '全部') {
@@ -710,31 +713,15 @@ async function DataProcess ({ type, sort, page, search }) {
         arr.forEach(items => {
           if (items.type === e.innerText) result.push(items)
         })
-        // console.log(result)
 
         // let groupedFilterResult = createGroup(result)
         $(`.pagination a`).removeClass('selected-pagination')
         $(`.pagination li:nth-child(2)`)
           .find('a')
           .addClass('selected-pagination')
-        // let totalFilterPage = groupedFilterResult.length
-        // currentFilterPage = 1;
-        // console.log(currentFilterPage)
-        // let hasData = totalFilterPage > 0
-        // if(hasData) {
-        //   $('.pagination li:last-child').click(function () {
-        //     if(currentFilterPage < totalFilterPage) currentFilterPage ++;
-        //     console.log(currentFilterPage)
-        //   })
-        //   $('.pagination li:first-child').click(function () {
-        //     if(currentFilterPage > 1) currentFilterPage --;
-        //     console.log(currentFilterPage)
-        //   })
-        // }
         if (result.length === 0) showNoData()
         // else renderData(groupedFilterResult[0])
       }
-      // console.log(data)
     })
   })
 
@@ -756,25 +743,26 @@ async function DataProcess ({ type, sort, page, search }) {
       const dateSort = document.querySelector('#button-date')
       let groupedFilterResult = createGroup(arr2)
       if (dateSort.innerText === '由舊到新\nkeyboard_arrow_down') {
-        arr2 = arr2.sort((a, b) => new Date(a.create_time) - new Date(b.create_time))
+        arr2 = arr2.sort(
+          (a, b) => new Date(a.create_time) - new Date(b.create_time)
+        )
       } else {
-        arr2 = arr2.sort((a, b) => new Date(b.create_time) - new Date(a.create_time))
+        arr2 = arr2.sort(
+          (a, b) => new Date(b.create_time) - new Date(a.create_time)
+        )
       }
       groupedFilterResult = createGroup(arr2)
-      console.log(arr2)
+
       //如果已被選取，innerText會有check
-      // console.log(alreadySelected.length)
+
       // let index = arr2.indexOf(selectedItem)
       // arr2.splice(index, 1)
     } else {
       selectedItem = this.innerText
       arr2 = arr2.filter(e => e.type !== selectedItem)
       clickedNum -= 1
-      console.log(arr2)
-      console.log(clickedNum)
     }
-    // console.log(groupedFilterResult)
-    
+
     groupedFilterResult = createGroup(arr2)
     paginationProcess(groupedFilterResult.length, groupedFilterResult)
     let oneKind = true
@@ -807,25 +795,23 @@ async function DataProcess ({ type, sort, page, search }) {
           let newStr =
             searchInput.value[0].toUpperCase() +
             searchInput.value.slice(1, searchInput.value.length)
-            console.log(newStr)
-            searchString = new RegExp(newStr)
-            if (searchString.test(title)) 
-            if(!searched.includes(e)) searched.push(e)
+
+          searchString = new RegExp(newStr)
+          if (searchString.test(title))
+            if (!searched.includes(e)) searched.push(e)
         }
-        console.log(searched)
       })
       searchGroup = createGroup(searched)
       // filterPagination(searchGroup)
       if (searchGroup.length > 0) {
-        if(searchGroup.length == 1) {
-            $(`.pagination li:nth-child(1)`).hide()
-            $(`.pagination li:nth-child(7)`).hide()
+        if (searchGroup.length == 1) {
+          $(`.pagination li:nth-child(1)`).hide()
+          $(`.pagination li:nth-child(7)`).hide()
         }
         renderData(searchGroup[0])
+      } else {
+        showNoData()
       }
-      else {
-        showNoData(); 
-      }  
       totalPage = searchGroup.length
       paginationProcess(totalPage, searchGroup)
       // renderData(groupedResult[0])
@@ -854,8 +840,10 @@ function switchPagination (item, arr) {
       paginationProcess(totalPage, arr)
     } else {
       showNoData()
+      for (let i = 1; i <= 7; i++) {
+        $(`.pagination li:nth-child(${i})`).hide()
+      }
     }
-    // console.log(totalPage)
   }
 }
 function createGroup (arr) {
@@ -869,33 +857,56 @@ function createGroup (arr) {
 }
 function sortData (arr) {
   //排序功能
+  const types = [
+    '全部',
+    '問答服務',
+    '虛擬客服',
+    '生活應用',
+    '程式知識',
+    '翻譯助手',
+    '行銷文案'
+  ]
+
+  console.log($('.selection-bar a').css('color'))
+
   const dateSort = document.querySelector('#button-date')
   $('#to-old-btn').on('click', e => {
-    arr.sort((a, b) => new Date(b.create_time) - new Date(a.create_time))
-    // console.log(arr)
+    for (let i = 1; i <= types.length; i++) {
+      if ($(`.selection-bar a:eq(${i})`).css('color') === 'rgb(0, 0, 0)')
+        arrcopy = arr.filter(e => e.type === types[i])
+    }
+    if ($(`.selection-bar a:eq(${0})`).css('color') === 'rgb(0, 0, 0)')
+      arrcopy = arr
+    arrcopy.sort((a, b) => new Date(b.create_time) - new Date(a.create_time))
+
     e.preventDefault()
     dateSort.innerHTML =
       '由新到舊<span class="material-icons date-sort-drop-icon">keyboard_arrow_down</span>'
     $('.date-sort-drop').slideToggle()
     $('#button-date').toggleClass('active')
     // renderData(arr)
-    let groupedFilterResult = createGroup(arr)
-    // console.log(groupedFilterResult)
-    renderData(groupedFilterResult[0])
+    let groupedFilterResult = createGroup(arrcopy)
+
+    if(groupedFilterResult.length>0)renderData(groupedFilterResult[0])
     paginationProcess(groupedFilterResult.length, groupedFilterResult)
   })
   $('#to-new-btn').on('click', e => {
-    arr.sort((a, b) => new Date(a.create_time) - new Date(b.create_time))
-    // console.log(arr)
+    for (let i = 1; i <= types.length; i++) {
+      if ($(`.selection-bar a:eq(${i})`).css('color') === 'rgb(0, 0, 0)')
+        arrcopy = arr.filter(e => e.type === types[i])
+    }
+    if ($(`.selection-bar a:eq(${0})`).css('color') === 'rgb(0, 0, 0)')
+      arrcopy = arr
+    arrcopy.sort((a, b) => new Date(a.create_time) - new Date(b.create_time))
+
     e.preventDefault()
     dateSort.innerHTML =
       '由舊到新<span class="material-icons date-sort-drop-icon">keyboard_arrow_down</span>'
     $('.date-sort-drop').slideToggle()
     $('#button-date').toggleClass('active')
-    let groupedFilterResult = createGroup(arr)
-    // console.log(groupedFilterResult)
+    let groupedFilterResult = createGroup(arrcopy)
 
-    renderData(groupedFilterResult[0])
+    if(groupedFilterResult.length>0)renderData(groupedFilterResult[0])
     paginationProcess(groupedFilterResult.length, groupedFilterResult)
   })
 }
@@ -916,16 +927,20 @@ function paginationProcess (totalPage, group) {
   $('.pagination li:first-child').unbind('click')
   $('.pagination li:last-child').unbind('click')
   const dateSort = document.querySelector('#button-date')
-  console.log(dateSort.innerText)
+
   if (dateSort.innerText === '由舊到新\nkeyboard_arrow_down') {
-    group = group.flat().sort((a, b) => new Date(a.create_time) - new Date(b.create_time))
+    group = group
+      .flat()
+      .sort((a, b) => new Date(a.create_time) - new Date(b.create_time))
   } else {
-    group = group.flat().sort((a, b) => new Date(b.create_time) - new Date(a.create_time))
+    group = group
+      .flat()
+      .sort((a, b) => new Date(b.create_time) - new Date(a.create_time))
   }
-  console.log(group)
+
   group = createGroup(group)
-  console.log(group)
-  if(group.length>0) renderData(group[0])
+
+  if (group.length > 0) renderData(group[0])
   const filters = document.querySelectorAll('.selection-bar a')
   for (let i = 2; i <= 6; i++) {
     if (Number($(`.pagination li:nth-child(${i})`).text()) > totalPage) {
@@ -939,19 +954,21 @@ function paginationProcess (totalPage, group) {
     $('.pagination a').addClass('unselected-pagination')
     $(this).find('a').toggleClass('selected-pagination')
     currentPage = $(this).index()
-    console.log(currentPage)
-    try {renderData(group[currentPage - 1])} catch{}
+
+    try {
+      renderData(group[currentPage - 1])
+    } catch {}
   })
 
   let currentPage = 1
-  // console.log(currentPage)
+  // $(`.pagination li:nth-child(2)`).show()
   if (totalPage != 0) {
     $('.pagination li:last-child').click(function () {
       if (currentPage < totalPage) {
         currentPage++
         if (currentPage == totalPage) {
         }
-        console.log(currentPage)
+
         if (!(currentPage % 5 == 0)) {
           $(`.pagination a`).removeClass('selected-pagination')
           $(`.pagination li:nth-child(${(currentPage % 5) + 1})`)
@@ -980,9 +997,6 @@ function paginationProcess (totalPage, group) {
           $(`.pagination li:nth-child(${6})`)
             .find('a')
             .addClass('selected-pagination')
-
-          console.log(totalPage)
-          // console.log(index)
         }
         for (let i = 2; i <= 6; i++) {
           if (Number($(`.pagination li:nth-child(${i})`).text()) > totalPage) {
@@ -1003,10 +1017,10 @@ function paginationProcess (totalPage, group) {
           $(`.pagination li:nth-child(${i})`).show()
         }
       }
-      // console.log(index)
+
       if (currentPage > 1) {
         currentPage -= 1
-        console.log(currentPage)
+
         if (currentPage % 5 == 0) {
           $(`.pagination li:nth-child(${6})`).find('a').text(`${currentPage}`)
           $(`.pagination li:nth-child(${5})`)
@@ -1048,6 +1062,51 @@ function paginationProcess (totalPage, group) {
   }
 }
 
+function toolsTag () {
+  document.querySelectorAll('a[href="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault()
+    })
+  })
+
+  $('.tools-tag-1').click(function (e) {
+    let groupedData = null
+    let index = null
+    switch (this.innerText) {
+      case '#問答服務':
+        groupedData = qaGrouped
+        index = 1
+        break
+      case '#虛擬客服':
+        groupedData = virtualGrouped
+        index = 2
+        break
+      case '#生活應用':
+        groupedData = lifeUseGrouped
+        index = 3
+        break
+      case '#程式知識':
+        groupedData = programmingGrouped
+        index = 4
+        break
+      case '#翻譯助手':
+        groupedData = translationGrouped
+        index = 5
+        break
+      case '#行銷文案':
+        groupedData = translationGrouped
+        index = 6
+        break
+      default:
+        return
+    }
+    paginationProcess(groupedData.length, groupedData)
+    $('.selection-bar a').removeClass('selected font-700')
+    $('.selection-bar a').addClass('unselected')
+    $('.selection-bar a:eq(' + index + ')').addClass('selected font-700')
+    renderData(groupedData[0])
+  })
+}
 /*ToDo*/
 
 /*ToCheck*/
