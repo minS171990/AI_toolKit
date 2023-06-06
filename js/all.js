@@ -753,6 +753,14 @@ async function DataProcess ({ type, sort, page, search }) {
           arr2.push(e)
         }
       })
+      const dateSort = document.querySelector('#button-date')
+      let groupedFilterResult = createGroup(arr2)
+      if (dateSort.innerText === '由舊到新\nkeyboard_arrow_down') {
+        arr2 = arr2.sort((a, b) => new Date(a.create_time) - new Date(b.create_time))
+      } else {
+        arr2 = arr2.sort((a, b) => new Date(b.create_time) - new Date(a.create_time))
+      }
+      groupedFilterResult = createGroup(arr2)
       console.log(arr2)
       //如果已被選取，innerText會有check
       // console.log(alreadySelected.length)
@@ -765,9 +773,9 @@ async function DataProcess ({ type, sort, page, search }) {
       console.log(arr2)
       console.log(clickedNum)
     }
-    let groupedFilterResult = createGroup(arr2)
     // console.log(groupedFilterResult)
-
+    
+    groupedFilterResult = createGroup(arr2)
     paginationProcess(groupedFilterResult.length, groupedFilterResult)
     let oneKind = true
     for (let i = 1; i < arr2.length; i++) {
@@ -843,19 +851,9 @@ function switchPagination (item, arr) {
       for (let i = 1; i <= 7; i++) {
         $(`.pagination li:nth-child(${i})`).show()
       }
-      if (totalPage == 1) {
-        for (let i = 1; i <= 7; i++) {
-          $(`.pagination li:nth-child(${i})`).hide()
-        }
-      }
       paginationProcess(totalPage, arr)
     } else {
       showNoData()
-      if (totalPage == 0) {
-        for (let i = 1; i <= 7; i++) {
-          $(`.pagination li:nth-child(${i})`).hide()
-        }
-      }
     }
     // console.log(totalPage)
   }
@@ -914,6 +912,9 @@ function paginationReset (totalPage) {
 
 function paginationProcess (totalPage, group) {
   paginationReset()
+  $('.pagination li:not(:last-child):not(:first-child').unbind('click')
+  $('.pagination li:first-child').unbind('click')
+  $('.pagination li:last-child').unbind('click')
   const dateSort = document.querySelector('#button-date')
   console.log(dateSort.innerText)
   if (dateSort.innerText === '由舊到新\nkeyboard_arrow_down') {
