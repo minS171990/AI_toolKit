@@ -1095,7 +1095,7 @@ function toolsTag () {
         index = 5
         break
       case '#行銷文案':
-        groupedData = translationGrouped
+        groupedData = salingGrouped
         index = 6
         break
       default:
